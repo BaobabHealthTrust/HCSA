@@ -9,10 +9,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cvsa_development
+  database: HCSA_dev
   pool: 5
   username: root
-  password:
+  password:	
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -22,18 +22,18 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cvsa_test
+  database:	HCSA_test
   pool: 5
   username: root
-  password:
+  password:	
   socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cvsa_production
+  database: HCSA_prod
   pool: 5
   username: root
-  password:
+  password:	
   socket: /var/run/mysqld/mysqld.sock
