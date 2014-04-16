@@ -1,4 +1,4 @@
-class Votes < ActiveRecord::Base
+class Vote < ActiveRecord::Base
 
 	set_table_name 	:votes
 	set_primary_key :vote_id

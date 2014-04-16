@@ -1,4 +1,4 @@
-class Services < ActiveRecord::Base
+class Service < ActiveRecord::Base
 
 	set_table_name  :services
 	set_primary_key :service_id

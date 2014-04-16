@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ServicesTest < ActiveSupport::TestCase
+class VoteConcernTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true

@@ -4,4 +4,12 @@
 # Examples:
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
+#   Mayor.create(:name => 'Daley', :city => cities.first)puts 'loading services'
+
+servicelist = ["OPD","Martenity","Theatre","Eye","Dental","Skin Clinic","OB/Gyn",	 "Casualties",
+				 "Medical","Pediatrics","Family Planning","Surgical","Orthropedics","Radiology"]
+  			 (servicelist).each do |name|
+  			 s_type = Service.new()
+ 			 s_type.name = name
+ 			 s_type.save
+	      end

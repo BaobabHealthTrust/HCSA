@@ -56,3 +56,108 @@ Migrating to CreateServiceConcerns (20140415084735)
   [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `vote_concerns`
   [1m[36mSQL (1.3ms)[0m  [1mdescribe `votes`[0m
   [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `votes`
+  [1m[36mSCHEMA (0.6ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mSCHEMA (0.7ms)[0m  SHOW TABLES 
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[36mSCHEMA (0.7ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mServices Load (0.6ms)[0m  SELECT `services`.* FROM `services`
+  [1m[36mServices Load (0.3ms)[0m  [1mSELECT `services`.* FROM `services`[0m
+  [1m[36mSCHEMA (0.3ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mSCHEMA (0.5ms)[0m  SHOW TABLES 
+  [1m[36mSQL (89.1ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.8ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (219.9ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSCHEMA (0.4ms)[0m  SHOW TABLES 
+  [1m[36mSCHEMA (0.3ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mSCHEMA (0.4ms)[0m  SHOW TABLES 
+  [1m[36mSQL (1.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateServices (20140416124243)
+  [1m[35mSQL (111.6ms)[0m  CREATE TABLE `services` (`service_id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (41.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140416124243')[0m
+Migrating to CreateConcerns (20140416124424)
+  [1m[35mSQL (98.1ms)[0m  CREATE TABLE `concerns` (`concern_id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (41.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140416124424')[0m
+Migrating to CreateSatlevels (20140416124623)
+  [1m[35mSQL (99.7ms)[0m  CREATE TABLE `satlevels` (`satlevel_id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (31.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140416124623')[0m
+Migrating to CreateVotes (20140416125102)
+  [1m[35mSQL (85.0ms)[0m  CREATE TABLE `votes` (`vote_id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` varchar(255), `satlevel_id` int(11), `service_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (30.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140416125102')[0m
+Migrating to CreateVoteConcerns (20140416125415)
+  [1m[35mSQL (96.3ms)[0m  CREATE TABLE `vote_concerns` (`vote_id` int(11), `concern_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (199.0ms)[0m  [1mALTER TABLE vote_concerns ADD PRIMARY KEY(vote_id, concern_id)[0m
+  [1m[35mSQL (42.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140416125415')
+Migrating to CreateServiceConcerns (20140416125606)
+  [1m[36mSQL (107.1ms)[0m  [1mCREATE TABLE `service_concerns` (`service_id` int(11), `concern_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (243.0ms)[0m  ALTER TABLE service_concerns ADD PRIMARY KEY(service_id, concern_id)
+  [1m[36mSQL (42.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140416125606')[0m
+  [1m[35mSCHEMA (0.7ms)[0m  SHOW TABLES 
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSCHEMA (0.5ms)[0m  SHOW TABLES 
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `concerns`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `concerns`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `satlevels`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `satlevels`
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `service_concerns`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `service_concerns`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `services`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `services`
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `vote_concerns`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `vote_concerns`
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `votes`[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `votes`
+  [1m[36mService Load (0.5ms)[0m  [1mSELECT `services`.* FROM `services`[0m
+  [1m[35mSatlevel Load (0.3ms)[0m  SELECT `satlevels`.* FROM `satlevels`
+  [1m[36mSCHEMA (0.7ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mSCHEMA (0.5ms)[0m  SHOW TABLES 
+  [1m[36mSQL (1.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.5ms)[0m  [1mdescribe `services`[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('OPD', '2014-04-16 13:09:06', '2014-04-16 13:09:06')
+  [1m[36mSQL (41.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Martenity', '2014-04-16 13:09:06', '2014-04-16 13:09:06')[0m
+  [1m[35mSQL (29.7ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Theatre', '2014-04-16 13:09:06', '2014-04-16 13:09:06')
+  [1m[36mSQL (29.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Eye', '2014-04-16 13:09:06', '2014-04-16 13:09:06')[0m
+  [1m[35mSQL (30.0ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Dental', '2014-04-16 13:09:07', '2014-04-16 13:09:07')
+  [1m[36mSQL (30.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Skin Clinic', '2014-04-16 13:09:07', '2014-04-16 13:09:07')[0m
+  [1m[35mSQL (29.9ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('OB/Gyn', '2014-04-16 13:09:07', '2014-04-16 13:09:07')
+  [1m[36mSQL (29.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Casualties', '2014-04-16 13:09:07', '2014-04-16 13:09:07')[0m
+  [1m[35mSQL (29.9ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Medical', '2014-04-16 13:09:07', '2014-04-16 13:09:07')
+  [1m[36mSQL (43.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Pediatrics', '2014-04-16 13:09:07', '2014-04-16 13:09:07')[0m
+  [1m[35mSQL (30.8ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Family Planning', '2014-04-16 13:09:07', '2014-04-16 13:09:07')
+  [1m[36mSQL (29.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Surgical', '2014-04-16 13:09:07', '2014-04-16 13:09:07')[0m
+  [1m[35mSQL (29.7ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Orthropedics', '2014-04-16 13:09:07', '2014-04-16 13:09:07')
+  [1m[36mSQL (29.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `services` (`name`, `created_at`, `updated_at`) VALUES ('Radiology', '2014-04-16 13:09:07', '2014-04-16 13:09:07')[0m
+  [1m[35mSQL (29.7ms)[0m  COMMIT
+  [1m[36mService Load (0.6ms)[0m  [1mSELECT `services`.* FROM `services`[0m
+  [1m[35mService Load (0.4ms)[0m  SELECT `services`.* FROM `services`
+  [1m[36mService Load (0.4ms)[0m  [1mSELECT `services`.* FROM `services`[0m
+  [1m[35mService Load (0.3ms)[0m  SELECT `services`.* FROM `services`
+  [1m[36mService Load (0.3ms)[0m  [1mSELECT `services`.* FROM `services`[0m
+  [1m[35mService Load (0.3ms)[0m  SELECT `services`.* FROM `services`
+  [1m[36mService Load (0.6ms)[0m  [1mSELECT `services`.* FROM `services` ORDER BY services.service_id DESC LIMIT 1[0m
