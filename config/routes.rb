@@ -1,4 +1,50 @@
 Cvsa::Application.routes.draw do
+
+
+
+resources :services
+
+#resourses :vote
+
+##########services########################
+#get "service/serviceselect"
+
+###########votes#######################
+get	"votes/index"
+	
+get 	"votes/authenticate"
+
+get	"votes/serviceselect"
+
+post    "votes/checksat"
+
+post    "votes/assesslevel"
+
+get 	"votes/concerns"
+
+get	"votes/save_vote"
+
+post 	"votes/save_vote"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

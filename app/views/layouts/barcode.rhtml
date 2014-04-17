@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title><%= @title = "#{controller.controller_name.humanize} #{controller.action_name.humanize}" rescue ""  %></title>
+    
+    <%= stylesheet_link_tag "multiTouch"%>
+    <%= stylesheet_link_tag "dashboard" %>
+    <%= javascript_include_tag "barcode" %>
+    
+    <style type="text/css">
+      #barcode {
+        background:transparent none repeat scroll 0 0;
+        border-color:-moz-use-text-color -moz-use-text-color silver;
+        border-style:none none solid;
+        border-width:medium medium 1px;
+        font-family:"Nimbus Sans L","Arial Narrow",sans-serif;
+        font-size:2.2em;
+        padding-left:5px;
+        width:600px;      
+      }
+      #header div {
+        font-weight:normal;
+        float:none;
+        clear:both;
+      }
+    </style>
+    
+  </head>
+  <body id="mateme">  
+    <div id="container">      
+      <div id="content">
+       <div id="view_tab1" class="view" style="display: block;">
+		<center>   
+			<h1>WELCOME <br/><br/>TO <br/><br/><%= image_tag("mw.gif")%><br/><br/>KAMUZU CENTRAL HOSPITAL</h1>
+					<h2>CLIENT SATISFACTION VOTING SYSTEM</h2>
+		</center><br/><br/><br/>
+
+			<h2>
+					<div style="float:left;font-size:40px;font-style: normal;font-weight: bold;">Scan your barcode:	
+					</div>
+				 <%= yield %>
+			</h2>
+
+   			 </div>
+		  </div>
+
+		<div/>
+		
+        
+      </div> 
+    </div>
+  </body>
+</html>

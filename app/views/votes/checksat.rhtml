@@ -1,0 +1,19 @@
+
+<html>
+	<head>
+	<title>question</title>	
+	</head>
+	
+	<body>
+		<h1>ARE YOU SATISFIED WITH THE SERVICE YOU HAVE RECEIVED IN <%=@service_selected%>?</h1>
+	 <form action = "/votes/assesslevel" method = "post" >
+		<%= select_tag("satlevel", options_for_select(@sat.collect{|sat|sat.name}))%>
+	
+		<%= hidden_field_tag("client_id", params[:client_id])%>
+		<%= hidden_field_tag("service_sel", params[:service])%>
+
+         <input type="submit" value="Submit"/>      
+	</form>
+	</body>
+
+</html>

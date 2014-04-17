@@ -1,0 +1,19 @@
+<html>
+	<head>
+	<title>services</title>	
+	</head>
+	
+	<body>
+		<h1>CHOOSE A SERVICE</h1>
+	<form action = "/votes/checksat" method = "post" >
+	
+		<%= select_tag("service", options_for_select(@service.collect{|service|service.name}))%>
+
+		<%= hidden_field_tag("client_id", params[:client_id])%>
+
+         	<input type="submit" value="Submit"/>      
+	</form>
+	
+	</body>
+
+</html>

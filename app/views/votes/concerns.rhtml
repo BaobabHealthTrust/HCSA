@@ -1,0 +1,26 @@
+<html>
+    <head>
+	<title>concerns</title>	
+    </head>
+	
+     <body>
+	 <h1>CHOSE THE PROBLEMS YOU HAD IN <%=%></h1>
+	<form action = "/votes/save_vote " method = "post" >
+	
+		<%@concerns.each do |t|%>
+		<li>
+		    <%= check_box_tag("concerns[]", t.name)%>
+		    <%= t.name %>
+		</li>
+	        <% end %>
+         
+		
+	<input type="submit" value="Submit"/>      
+	
+	</form>
+    </body>
+
+</html>
+
+
+        

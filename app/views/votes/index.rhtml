@@ -1,0 +1,11 @@
+  <% if !flash[:notice].blank? %>
+	<script>
+		alert('<%= "#{flash[:notice]}" %>');
+	</script>
+<%end %>
+<form id='barcodeForm' action="/votes/authenticate">
+            
+          
+          <%= text_field_tag :barcode, '', {:id => 'barcode', :class => 'touchscreenTextInput', :style => 					'position:absolute' } %>
+          <%= submit_tag "Submit", :style => "display:none" %>
+</form>
