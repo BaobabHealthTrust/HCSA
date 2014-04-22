@@ -1,13 +1,10 @@
 class VotesController < ApplicationController
 	
-	
-	
 	def index
 		render :layout => 'barcode'
 	end
 
 	def authenticate
-	
 	
 	    hash= Digest::SHA1.hexdigest(params[:barcode])
        
@@ -16,9 +13,9 @@ class VotesController < ApplicationController
    	 	  if !(validate_time.blank?)
 
 			   flash[:notice] = "you have already voted.Thank you"
-			   redirect_to :controller=>"vote", :action=>"index"
+			   redirect_to :controller=>"votes", :action=>"index"
 	    		 else
-	      		 	redirect_to :controller=>"votes", :action=>"serviceselect", :client_id => hash
+	      		 redirect_to :controller=>"votes", :action=>"serviceselect", :client_id => hash
       
 		 end
 	
@@ -34,10 +31,8 @@ class VotesController < ApplicationController
 	
 	def checksat
 	
-		#raise params.to_yaml
-		hash_id = params[:client_id]
+		@hash_id = params[:client_id]
 		@service_selected = params[:service]
-		#raise @service_selected.to_yaml
 		@sat = Satlevel.all.delete_if{|sat|sat.name.blank?}
 		
 	 end
@@ -45,31 +40,62 @@ class VotesController < ApplicationController
 	def assesslevel
 	
 		#raise params.to_yaml
+		client_id = params[:client_id]
+		selected_service = params[:service_sel]
+		
 		if ((params[:satlevel])== "FULLY SATISFIED" || (params[:satlevel])== "SATISFIED")
         	
-   
-		redirect_to :controller=>"votes", :action=>"save_vote"#, :client_id => client_id, 
-           	#:service_type => service_type,:response => params[:answers]
-		else 
-			redirect_to :controller=>"votes", :action=>"concerns"#, :client_id => client_id, 
-            		#:service_type => service_type,:vote_type => params[:answers]
+   			redirect_to :controller=>"votes", :action=>"save_vote", :client_id => client_id, 
+           		:service_choice => selected_service,:response => params[:satlevel]
+		   else 
+			redirect_to :controller=>"votes", :action=>"concerns", :client_id => client_id, 
+            		:service_choice => selected_service,:response => params[:satlevel]
 		end
 	end
 	
 	
 	def concerns
-	 
-        #raise params.to_yaml
-	
-	@concerns = Concern.all
+	    	@service = params[:service_choice]
+      		@concerns = Concern.all
 		
 	end
 	
 	
 	def save_vote
-	raise params.to_yaml
+	
+		vote = Vote.new
+       		vote.client_id   = params[:client_id] 
+		vote.satlevel_id = Satlevel.find_by_name(params[:response]).id
+		vote.service_id  = Service.find_by_name(params[:service_choice]).id
+		
+		if vote.save
+			
+				concern= params[:concerns]
+				concern.each do |f|
+				vote_concern 	        = VoteConcern.new
+				vote_concern.vote_id    = Vote.last.id
+				vote_concern.concern_id = Concern.find_by_name(f).id
+				vote_concern.save
+			
+			   	end if !(params[:concern].nil?)
+			#alert[:notice]= "Thank you for voting.BYE!!!"
+			redirect_to :controller=>"votes", :action=>"comment", :service => params[:service_choice]
+			
+		end
+         		
+	end 
+
+	def comment
+	
+	@service = params[:service_choice]
+	
 	end
 	
+	def save_comment
+
+	redirect_to :controller=>"votes", :action=>"index"
+
+	end
 	
 
 end

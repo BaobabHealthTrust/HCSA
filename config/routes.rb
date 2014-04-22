@@ -26,6 +26,11 @@ get	"votes/save_vote"
 
 post 	"votes/save_vote"
 
+get	"votes/comment"
+
+post 	"votes/save_comment"
+
+
 
 
 

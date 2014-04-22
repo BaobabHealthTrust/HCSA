@@ -1,5 +1,5 @@
-require "ruby gems"
-require "composite_primary_keys"
+#require 'ruby gems'
+require 'composite_primary_keys'
 
 class VoteConcern < ActiveRecord::Base
 

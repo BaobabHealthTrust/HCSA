@@ -1,3 +1,4 @@
+
 <html>
     <head>
 	<title>concerns</title>	
@@ -25,27 +26,21 @@
 	
 	<div id="header">
 	 	 <span style="font-size: 45px;color: #C0C0C0;font-family:arial;">
-           		 CHOSE THE PROBLEMS YOU HAD IN <%=@service %>
+           		
           	 </span>
   		    <img src="/images/vote.jpg" style="float: left;margin-top: 5px;margin-left: 5px;height: 80px;">
            
 	   </div>
 
 	 
-	<form action = "/votes/save_vote " method = "post" >
-	
-		<%@concerns.each do |t|%>
-		<li>
-		    <%= check_box_tag("concerns[]", t.name)%>
-		    <%= t.name %>
-		</li>
-	        <% end %>
-		<%= hidden_field_tag("client_id", params[:client_id])%>
-		<%= hidden_field_tag("service_choice", params[:service_choice])%>
-		<%= hidden_field_tag("response", params[:response])%>
-         
+	<form action = "/votes/save_comment " method = "post" >
+		<div>
+		THANK YOU FOR VOTING
+		</div>
 		
-	<input type="submit" value="Submit"/>      
+	<input type="submit" value="FINISH"/>   
+	<input type="submit" value="COMMENT"/> 
+	  
 	
 	</form>
     </body>
