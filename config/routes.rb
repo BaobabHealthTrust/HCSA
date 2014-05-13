@@ -30,8 +30,9 @@ get	"votes/comment"
 
 post 	"votes/save_comment"
 
+get     "votes/leavecomment"
 
-
+get    "votes/save_comment"
 
 
 
