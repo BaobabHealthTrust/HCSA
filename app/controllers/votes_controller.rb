@@ -64,24 +64,25 @@ class VotesController < ApplicationController
 		vote = Vote.new
        		vote.client_id   = params[:client_id] 
 		vote.satlevel_id = Satlevel.find_by_name(params[:response]).id
-		#raise params.to_yaml
 		vote.service_id  = Service.find_by_name(params[:service_choice]).id
 		
 		if vote.save
 			
+				
+			if !(params[:concerns].nil?)
+	
 				concern= params[:concerns]
 				concern.each do |f|
 				vote_concern 	        = VoteConcern.new
 				vote_concern.vote_id    = Vote.last.id
 				vote_concern.concern_id = Concern.find_by_name(f).id
 				vote_concern.save
-			
-			   	end if !(params[:concern].nil?)
+				end
+			end 
 				redirect_to :controller=>"votes", :action=>"comment", :service => params[:service_choice]
+	       end 
 			
-		end
-         		
-	end 
+        end 
 
 	def comment
 
