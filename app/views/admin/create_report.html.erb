@@ -1,0 +1,37 @@
+  <HTML>
+  <HEAD>
+  <TITLE>General</TITLE>
+  </HEAD>
+
+  <BODY>
+<center>
+	
+	<%= "GENERAL PERFORMANCE REPORT" %>
+ 
+<table border = 2>
+
+   <tr width = "100%">
+     <th>DATE</th>
+     <th>FULLY SATISFIED</th>
+     <th>SATISFIED</th>
+     <th>AT LEAST SATISFIED</th>
+     <th>A BIT SATISFIED</th>
+     <th>NOT SATISFIED</th>
+   </tr>
+
+ 
+<% @votes.each do |vote| %>
+  <tr>
+    <td><%= vote.created_at.strftime("%d %B %Y" )%></td>
+  </tr>
+<% end %>
+</table>
+ 
+<br>
+ 
+
+</center>
+  </BODY>
+  </HTML>
+
+
