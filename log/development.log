@@ -26110,3 +26110,561 @@ ActionController::RoutingError (No route matches "/stylesheets/dashboard.css"):
   
 
 Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/votes/authenticate?barcode=bvsajnm" for 127.0.0.1 at 2014-05-14 01:36:36 +0200
+  Processing by VotesController#authenticate as HTML
+  Parameters: {"barcode"=>"bvsajnm"}
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE (client_id ='6839884116ff087431b27f30094c6f20ecdb2908' AND created_at >= '2014-05-13 21:36:36')[0m
+Redirected to http://localhost:3000/votes/serviceselect?client_id=6839884116ff087431b27f30094c6f20ecdb2908
+Completed 302 Found in 232ms
+
+
+Started GET "/votes/serviceselect?client_id=6839884116ff087431b27f30094c6f20ecdb2908" for 127.0.0.1 at 2014-05-14 01:36:37 +0200
+  Processing by VotesController#serviceselect as HTML
+  Parameters: {"client_id"=>"6839884116ff087431b27f30094c6f20ecdb2908"}
+  [1m[35mService Load (0.2ms)[0m  SELECT `services`.* FROM `services`
+Rendered votes/serviceselect.rhtml within layouts/application (1.1ms)
+Completed 200 OK in 18ms (Views: 3.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/votes/checksat" for 127.0.0.1 at 2014-05-14 01:36:39 +0200
+  Processing by VotesController#checksat as HTML
+  Parameters: {"service"=>"Theatre", "client_id"=>"6839884116ff087431b27f30094c6f20ecdb2908"}
+  [1m[36mSatlevel Load (0.2ms)[0m  [1mSELECT `satlevels`.* FROM `satlevels`[0m
+Rendered votes/checksat.rhtml within layouts/application (1.1ms)
+Completed 200 OK in 15ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/votes/assesslevel" for 127.0.0.1 at 2014-05-14 01:36:41 +0200
+  Processing by VotesController#assesslevel as HTML
+  Parameters: {"client_id"=>"6839884116ff087431b27f30094c6f20ecdb2908", "service_sel"=>"Theatre", "satlevel"=>"A BIT SATISFIED"}
+Redirected to http://localhost:3000/votes/concerns?client_id=6839884116ff087431b27f30094c6f20ecdb2908&response=A+BIT+SATISFIED&service_choice=Theatre
+Completed 302 Found in 1ms
+
+
+Started GET "/votes/concerns?client_id=6839884116ff087431b27f30094c6f20ecdb2908&response=A+BIT+SATISFIED&service_choice=Theatre" for 127.0.0.1 at 2014-05-14 01:36:41 +0200
+  Processing by VotesController#concerns as HTML
+  Parameters: {"client_id"=>"6839884116ff087431b27f30094c6f20ecdb2908", "response"=>"A BIT SATISFIED", "service_choice"=>"Theatre"}
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns`
+Rendered votes/concerns.rhtml within layouts/application (6.7ms)
+Completed 200 OK in 40ms (Views: 9.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/votes/save_vote" for 127.0.0.1 at 2014-05-14 01:36:48 +0200
+  Processing by VotesController#save_vote as HTML
+  Parameters: {"concerns"=>["Harsh Attitude Nurses", "Unhygienic rooms", "Unhygienic bedings", "Delay treatment", "Careless Nurses"], "client_id"=>"6839884116ff087431b27f30094c6f20ecdb2908", "service_choice"=>"Theatre", "response"=>"A BIT SATISFIED"}
+  [1m[36mSatlevel Load (0.4ms)[0m  [1mSELECT `satlevels`.* FROM `satlevels` WHERE `satlevels`.`name` = 'A BIT SATISFIED' LIMIT 1[0m
+  [1m[35mService Load (0.3ms)[0m  SELECT `services`.* FROM `services` WHERE `services`.`name` = 'Theatre' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  describe `votes`
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `votes` (`client_id`, `satlevel_id`, `service_id`, `created_at`, `updated_at`) VALUES ('6839884116ff087431b27f30094c6f20ecdb2908', 4, 3, '2014-05-13 23:36:48', '2014-05-13 23:36:48')[0m
+  [1m[35mSQL (87.2ms)[0m  COMMIT
+  [1m[36mVote Load (0.6ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.1ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Harsh Attitude Nurses' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (179, 3, '2014-05-13 23:36:48', '2014-05-13 23:36:48')[0m
+  [1m[35mSQL (35.1ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Unhygienic rooms' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (179, 4, '2014-05-13 23:36:48', '2014-05-13 23:36:48')[0m
+  [1m[35mSQL (37.3ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Unhygienic bedings' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (179, 5, '2014-05-13 23:36:48', '2014-05-13 23:36:48')[0m
+  [1m[35mSQL (28.5ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Delay treatment' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (179, 6, '2014-05-13 23:36:48', '2014-05-13 23:36:48')[0m
+  [1m[35mSQL (36.9ms)[0m  COMMIT
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Careless Nurses' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (179, 7, '2014-05-13 23:36:48', '2014-05-13 23:36:48')[0m
+  [1m[35mSQL (36.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/votes/comment?service=Theatre
+Completed 302 Found in 413ms
+
+
+Started GET "/votes/comment?service=Theatre" for 127.0.0.1 at 2014-05-14 01:36:48 +0200
+  Processing by VotesController#comment as HTML
+  Parameters: {"service"=>"Theatre"}
+Rendered votes/comment.rhtml within layouts/application (2.9ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 275.4ms)
+
+
+Started GET "/votes/leavecomment/" for 127.0.0.1 at 2014-05-14 01:36:50 +0200
+  Processing by VotesController#leavecomment as HTML
+Rendered votes/leavecomment.rhtml within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/votes/save_comment" for 127.0.0.1 at 2014-05-14 01:36:55 +0200
+  Processing by VotesController#save_comment as HTML
+  Parameters: {"comment"=>"exbNM<"}
+  [1m[36mService Load (0.1ms)[0m  [1mSELECT `services`.* FROM `services` WHERE `services`.`name` = 'Theatre' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `comments`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `comments` (`service_id`, `comment`, `created_at`, `updated_at`) VALUES (3, 'exbNM<', '2014-05-13 23:36:55', '2014-05-13 23:36:55')
+  [1m[36mSQL (78.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/votes/index
+Completed 302 Found in 110ms
+
+
+Started GET "/votes/index" for 127.0.0.1 at 2014-05-14 01:36:55 +0200
+  Processing by VotesController#index as HTML
+Rendered votes/index.rhtml within layouts/barcode (1.8ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 80.3ms)
+
+
+Started GET "/stylesheets/multiTouch.css" for 127.0.0.1 at 2014-05-14 01:36:55 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/multiTouch.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/stylesheets/dashboard.css" for 127.0.0.1 at 2014-05-14 01:36:55 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/dashboard.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /usr/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/votes/index" for 127.0.0.1 at 2014-05-15 07:12:08 +0200
+  Processing by VotesController#index as HTML
+Rendered votes/index.rhtml within layouts/barcode (4.6ms)
+Completed 200 OK in 129ms (Views: 128.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/multiTouch.css" for 127.0.0.1 at 2014-05-15 07:12:08 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/multiTouch.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/stylesheets/dashboard.css" for 127.0.0.1 at 2014-05-15 07:12:08 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/dashboard.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/authenticate?barcode=exiel&commit=Submit" for 127.0.0.1 at 2014-05-15 07:12:12 +0200
+  Processing by VotesController#authenticate as HTML
+  Parameters: {"barcode"=>"exiel", "commit"=>"Submit"}
+  [1m[36mSQL (45.8ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE (client_id ='c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6' AND created_at >= '2014-05-15 03:12:12')[0m
+Redirected to http://localhost:3000/votes/serviceselect?client_id=c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6
+Completed 302 Found in 211ms
+
+
+Started GET "/votes/serviceselect?client_id=c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6" for 127.0.0.1 at 2014-05-15 07:12:12 +0200
+  Processing by VotesController#serviceselect as HTML
+  Parameters: {"client_id"=>"c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6"}
+  [1m[35mService Load (0.6ms)[0m  SELECT `services`.* FROM `services`
+Rendered votes/serviceselect.rhtml within layouts/application (1.6ms)
+Completed 200 OK in 118ms (Views: 27.1ms | ActiveRecord: 46.4ms)
+
+
+Started POST "/votes/checksat" for 127.0.0.1 at 2014-05-15 07:12:17 +0200
+  Processing by VotesController#checksat as HTML
+  Parameters: {"service"=>"Family Planning", "client_id"=>"c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6"}
+  [1m[36mSatlevel Load (0.6ms)[0m  [1mSELECT `satlevels`.* FROM `satlevels`[0m
+Rendered votes/checksat.rhtml within layouts/application (1.6ms)
+Completed 200 OK in 91ms (Views: 6.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/votes/assesslevel" for 127.0.0.1 at 2014-05-15 07:12:22 +0200
+  Processing by VotesController#assesslevel as HTML
+  Parameters: {"client_id"=>"c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6", "service_sel"=>"Family Planning", "satlevel"=>"A BIT SATISFIED"}
+Redirected to http://localhost:3000/votes/concerns?client_id=c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6&response=A+BIT+SATISFIED&service_choice=Family+Planning
+Completed 302 Found in 1ms
+
+
+Started GET "/votes/concerns?client_id=c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6&response=A+BIT+SATISFIED&service_choice=Family+Planning" for 127.0.0.1 at 2014-05-15 07:12:23 +0200
+  Processing by VotesController#concerns as HTML
+  Parameters: {"client_id"=>"c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6", "response"=>"A BIT SATISFIED", "service_choice"=>"Family Planning"}
+  [1m[35mConcern Load (0.7ms)[0m  SELECT `concerns`.* FROM `concerns`
+Rendered votes/concerns.rhtml within layouts/application (13.0ms)
+Completed 200 OK in 93ms (Views: 33.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/votes/save_vote" for 127.0.0.1 at 2014-05-15 07:12:31 +0200
+  Processing by VotesController#save_vote as HTML
+  Parameters: {"concerns"=>["No security", "Harsh Attitude Nurses", "Unhygienic rooms", "Unhygienic bedings", "Delay treatment", "Careless Nurses"], "client_id"=>"c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6", "service_choice"=>"Family Planning", "response"=>"A BIT SATISFIED"}
+  [1m[36mSCHEMA (0.8ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mSatlevel Load (0.6ms)[0m  SELECT `satlevels`.* FROM `satlevels` WHERE `satlevels`.`name` = 'A BIT SATISFIED' LIMIT 1
+  [1m[36mService Load (0.7ms)[0m  [1mSELECT `services`.* FROM `services` WHERE `services`.`name` = 'Family Planning' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `votes`[0m
+  [1m[35mAREL (47.1ms)[0m  INSERT INTO `votes` (`client_id`, `satlevel_id`, `service_id`, `created_at`, `updated_at`) VALUES ('c75b5d9b11cc7c4d905c7c2afd9da06693fb0fb6', 4, 11, '2014-05-15 05:12:31', '2014-05-15 05:12:31')
+  [1m[36mSQL (277.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mVote Load (0.7ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1
+  [1m[36mConcern Load (0.5ms)[0m  [1mSELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'No security' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `vote_concerns`[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (180, 2, '2014-05-15 05:12:32', '2014-05-15 05:12:32')
+  [1m[36mSQL (35.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mVote Load (0.3ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1
+  [1m[36mConcern Load (0.6ms)[0m  [1mSELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Harsh Attitude Nurses' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `vote_concerns`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (180, 3, '2014-05-15 05:12:32', '2014-05-15 05:12:32')
+  [1m[36mSQL (46.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1
+  [1m[36mConcern Load (0.7ms)[0m  [1mSELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Unhygienic rooms' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `vote_concerns`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (180, 4, '2014-05-15 05:12:32', '2014-05-15 05:12:32')
+  [1m[36mSQL (47.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1
+  [1m[36mConcern Load (0.3ms)[0m  [1mSELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Unhygienic bedings' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `vote_concerns`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (180, 5, '2014-05-15 05:12:32', '2014-05-15 05:12:32')
+  [1m[36mSQL (49.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mVote Load (0.3ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1
+  [1m[36mConcern Load (0.5ms)[0m  [1mSELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Delay treatment' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `vote_concerns`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (180, 6, '2014-05-15 05:12:32', '2014-05-15 05:12:32')
+  [1m[36mSQL (47.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mVote Load (0.3ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1
+  [1m[36mConcern Load (0.6ms)[0m  [1mSELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Careless Nurses' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `vote_concerns`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (180, 7, '2014-05-15 05:12:32', '2014-05-15 05:12:32')
+  [1m[36mSQL (47.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/votes/comment?service=Family+Planning
+Completed 302 Found in 938ms
+
+
+Started GET "/votes/comment?service=Family+Planning" for 127.0.0.1 at 2014-05-15 07:12:32 +0200
+  Processing by VotesController#comment as HTML
+  Parameters: {"service"=>"Family Planning"}
+Rendered votes/comment.rhtml within layouts/application (2.9ms)
+Completed 200 OK in 24ms (Views: 23.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/leavecomment/" for 127.0.0.1 at 2014-05-15 07:12:34 +0200
+  Processing by VotesController#leavecomment as HTML
+Rendered votes/leavecomment.rhtml within layouts/application (1.3ms)
+Completed 200 OK in 7ms (Views: 6.9ms | ActiveRecord: 617.3ms)
+
+
+Started POST "/votes/save_comment" for 127.0.0.1 at 2014-05-15 07:12:49 +0200
+  Processing by VotesController#save_comment as HTML
+  Parameters: {"comment"=>"make this service private"}
+  [1m[35mService Load (0.2ms)[0m  SELECT `services`.* FROM `services` WHERE `services`.`name` = 'Family Planning' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  describe `comments`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `comments` (`service_id`, `comment`, `created_at`, `updated_at`) VALUES (11, 'make this service private', '2014-05-15 05:12:49', '2014-05-15 05:12:49')[0m
+  [1m[35mSQL (82.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/votes/index
+Completed 302 Found in 317ms
+
+
+Started GET "/votes/index" for 127.0.0.1 at 2014-05-15 07:12:49 +0200
+  Processing by VotesController#index as HTML
+Rendered votes/index.rhtml within layouts/barcode (22.4ms)
+Completed 200 OK in 24ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/multiTouch.css" for 127.0.0.1 at 2014-05-15 07:12:49 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/multiTouch.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/stylesheets/dashboard.css" for 127.0.0.1 at 2014-05-15 07:12:49 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/dashboard.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/authenticate?barcode=vejwjnjmn" for 127.0.0.1 at 2014-05-15 07:18:44 +0200
+  Processing by VotesController#authenticate as HTML
+  Parameters: {"barcode"=>"vejwjnjmn"}
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE (client_id ='8ccaf37634e2e562856c126423f3d89f6d73fc6a' AND created_at >= '2014-05-15 03:18:44')[0m
+Redirected to http://localhost:3000/votes/serviceselect?client_id=8ccaf37634e2e562856c126423f3d89f6d73fc6a
+Completed 302 Found in 12ms
+
+
+Started GET "/votes/serviceselect?client_id=8ccaf37634e2e562856c126423f3d89f6d73fc6a" for 127.0.0.1 at 2014-05-15 07:18:44 +0200
+  Processing by VotesController#serviceselect as HTML
+  Parameters: {"client_id"=>"8ccaf37634e2e562856c126423f3d89f6d73fc6a"}
+  [1m[35mService Load (0.4ms)[0m  SELECT `services`.* FROM `services`
+Rendered votes/serviceselect.rhtml within layouts/application (1.1ms)
+Completed 200 OK in 18ms (Views: 3.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/votes/checksat" for 127.0.0.1 at 2014-05-15 07:18:56 +0200
+  Processing by VotesController#checksat as HTML
+  Parameters: {"service"=>"Dental", "client_id"=>"8ccaf37634e2e562856c126423f3d89f6d73fc6a"}
+  [1m[36mSatlevel Load (0.4ms)[0m  [1mSELECT `satlevels`.* FROM `satlevels`[0m
+Rendered votes/checksat.rhtml within layouts/application (3.2ms)
+Completed 200 OK in 30ms (Views: 10.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/votes/assesslevel" for 127.0.0.1 at 2014-05-15 07:18:59 +0200
+  Processing by VotesController#assesslevel as HTML
+  Parameters: {"client_id"=>"8ccaf37634e2e562856c126423f3d89f6d73fc6a", "service_sel"=>"Dental", "satlevel"=>"NOT SATISFIED"}
+Redirected to http://localhost:3000/votes/concerns?client_id=8ccaf37634e2e562856c126423f3d89f6d73fc6a&response=NOT+SATISFIED&service_choice=Dental
+Completed 302 Found in 1ms
+
+
+Started GET "/votes/concerns?client_id=8ccaf37634e2e562856c126423f3d89f6d73fc6a&response=NOT+SATISFIED&service_choice=Dental" for 127.0.0.1 at 2014-05-15 07:19:00 +0200
+  Processing by VotesController#concerns as HTML
+  Parameters: {"client_id"=>"8ccaf37634e2e562856c126423f3d89f6d73fc6a", "response"=>"NOT SATISFIED", "service_choice"=>"Dental"}
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns`
+Rendered votes/concerns.rhtml within layouts/application (12.2ms)
+Completed 200 OK in 28ms (Views: 17.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/votes/save_vote" for 127.0.0.1 at 2014-05-15 07:19:07 +0200
+  Processing by VotesController#save_vote as HTML
+  Parameters: {"concerns"=>["No Medicine", "No security", "Harsh Attitude Nurses", "Unhygienic rooms", "Unhygienic bedings", "Delay treatment", "Careless Nurses"], "client_id"=>"8ccaf37634e2e562856c126423f3d89f6d73fc6a", "service_choice"=>"Dental", "response"=>"NOT SATISFIED"}
+  [1m[36mSatlevel Load (0.6ms)[0m  [1mSELECT `satlevels`.* FROM `satlevels` WHERE `satlevels`.`name` = 'NOT SATISFIED' LIMIT 1[0m
+  [1m[35mService Load (0.6ms)[0m  SELECT `services`.* FROM `services` WHERE `services`.`name` = 'Dental' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  describe `votes`
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `votes` (`client_id`, `satlevel_id`, `service_id`, `created_at`, `updated_at`) VALUES ('8ccaf37634e2e562856c126423f3d89f6d73fc6a', 5, 5, '2014-05-15 05:19:07', '2014-05-15 05:19:07')[0m
+  [1m[35mSQL (106.6ms)[0m  COMMIT
+  [1m[36mVote Load (0.6ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.6ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'No Medicine' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (181, 1, '2014-05-15 05:19:07', '2014-05-15 05:19:07')[0m
+  [1m[35mSQL (58.5ms)[0m  COMMIT
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.4ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'No security' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (181, 2, '2014-05-15 05:19:07', '2014-05-15 05:19:07')[0m
+  [1m[35mSQL (37.3ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.2ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Harsh Attitude Nurses' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (181, 3, '2014-05-15 05:19:07', '2014-05-15 05:19:07')[0m
+  [1m[35mSQL (36.8ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Unhygienic rooms' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (18.0ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (181, 4, '2014-05-15 05:19:07', '2014-05-15 05:19:07')[0m
+  [1m[35mSQL (42.2ms)[0m  COMMIT
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.4ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Unhygienic bedings' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (181, 5, '2014-05-15 05:19:08', '2014-05-15 05:19:08')[0m
+  [1m[35mSQL (37.6ms)[0m  COMMIT
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Delay treatment' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (181, 6, '2014-05-15 05:19:08', '2014-05-15 05:19:08')[0m
+  [1m[35mSQL (37.2ms)[0m  COMMIT
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.2ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Careless Nurses' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (181, 7, '2014-05-15 05:19:08', '2014-05-15 05:19:08')[0m
+  [1m[35mSQL (38.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/votes/comment?service=Dental
+Completed 302 Found in 582ms
+
+
+Started GET "/votes/comment?service=Dental" for 127.0.0.1 at 2014-05-15 07:19:08 +0200
+  Processing by VotesController#comment as HTML
+  Parameters: {"service"=>"Dental"}
+Rendered votes/comment.rhtml within layouts/application (2.7ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 432.1ms)
+
+
+Started POST "/votes/save_comment" for 127.0.0.1 at 2014-05-15 07:19:10 +0200
+  Processing by VotesController#save_comment as HTML
+Redirected to http://localhost:3000/votes/index
+Completed 302 Found in 1ms
+
+
+Started GET "/votes/index" for 127.0.0.1 at 2014-05-15 07:19:10 +0200
+  Processing by VotesController#index as HTML
+Rendered votes/index.rhtml within layouts/barcode (1.8ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/multiTouch.css" for 127.0.0.1 at 2014-05-15 07:19:10 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/multiTouch.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/stylesheets/dashboard.css" for 127.0.0.1 at 2014-05-15 07:19:10 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/dashboard.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/authenticate?barcode=r" for 127.0.0.1 at 2014-05-15 10:44:03 +0200
+  Processing by VotesController#authenticate as HTML
+  Parameters: {"barcode"=>"r"}
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE (client_id ='4dc7c9ec434ed06502767136789763ec11d2c4b7' AND created_at >= '2014-05-15 06:44:03')[0m
+Redirected to http://localhost:3000/votes/serviceselect?client_id=4dc7c9ec434ed06502767136789763ec11d2c4b7
+Completed 302 Found in 12ms
+
+
+Started GET "/votes/serviceselect?client_id=4dc7c9ec434ed06502767136789763ec11d2c4b7" for 127.0.0.1 at 2014-05-15 10:44:03 +0200
+  Processing by VotesController#serviceselect as HTML
+  Parameters: {"client_id"=>"4dc7c9ec434ed06502767136789763ec11d2c4b7"}
+  [1m[35mService Load (0.4ms)[0m  SELECT `services`.* FROM `services`
+Rendered votes/serviceselect.rhtml within layouts/application (1.1ms)
+Completed 200 OK in 18ms (Views: 3.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/votes/checksat" for 127.0.0.1 at 2014-05-15 10:44:13 +0200
+  Processing by VotesController#checksat as HTML
+  Parameters: {"service"=>"Radiology", "client_id"=>"4dc7c9ec434ed06502767136789763ec11d2c4b7"}
+  [1m[36mSatlevel Load (0.4ms)[0m  [1mSELECT `satlevels`.* FROM `satlevels`[0m
+Rendered votes/checksat.rhtml within layouts/application (1.3ms)
+Completed 200 OK in 42ms (Views: 4.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/votes/assesslevel" for 127.0.0.1 at 2014-05-15 10:44:18 +0200
+  Processing by VotesController#assesslevel as HTML
+  Parameters: {"client_id"=>"4dc7c9ec434ed06502767136789763ec11d2c4b7", "service_sel"=>"Radiology", "satlevel"=>"A BIT SATISFIED"}
+Redirected to http://localhost:3000/votes/concerns?client_id=4dc7c9ec434ed06502767136789763ec11d2c4b7&response=A+BIT+SATISFIED&service_choice=Radiology
+Completed 302 Found in 1ms
+
+
+Started GET "/votes/concerns?client_id=4dc7c9ec434ed06502767136789763ec11d2c4b7&response=A+BIT+SATISFIED&service_choice=Radiology" for 127.0.0.1 at 2014-05-15 10:44:18 +0200
+  Processing by VotesController#concerns as HTML
+  Parameters: {"client_id"=>"4dc7c9ec434ed06502767136789763ec11d2c4b7", "response"=>"A BIT SATISFIED", "service_choice"=>"Radiology"}
+  [1m[35mConcern Load (0.4ms)[0m  SELECT `concerns`.* FROM `concerns`
+Rendered votes/concerns.rhtml within layouts/application (10.7ms)
+Completed 200 OK in 23ms (Views: 13.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/votes/save_vote" for 127.0.0.1 at 2014-05-15 10:44:30 +0200
+  Processing by VotesController#save_vote as HTML
+  Parameters: {"concerns"=>["No Medicine", "No security", "Harsh Attitude Nurses", "Unhygienic rooms", "Unhygienic bedings", "Delay treatment", "Careless Nurses"], "client_id"=>"4dc7c9ec434ed06502767136789763ec11d2c4b7", "service_choice"=>"Radiology", "response"=>"A BIT SATISFIED"}
+  [1m[36mSatlevel Load (0.4ms)[0m  [1mSELECT `satlevels`.* FROM `satlevels` WHERE `satlevels`.`name` = 'A BIT SATISFIED' LIMIT 1[0m
+  [1m[35mService Load (0.5ms)[0m  SELECT `services`.* FROM `services` WHERE `services`.`name` = 'Radiology' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  describe `votes`
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `votes` (`client_id`, `satlevel_id`, `service_id`, `created_at`, `updated_at`) VALUES ('4dc7c9ec434ed06502767136789763ec11d2c4b7', 4, 14, '2014-05-15 08:44:30', '2014-05-15 08:44:30')[0m
+  [1m[35mSQL (40.0ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'No Medicine' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (182, 1, '2014-05-15 08:44:31', '2014-05-15 08:44:31')[0m
+  [1m[35mSQL (43.2ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'No security' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (182, 2, '2014-05-15 08:44:31', '2014-05-15 08:44:31')[0m
+  [1m[35mSQL (47.4ms)[0m  COMMIT
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.1ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Harsh Attitude Nurses' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (182, 3, '2014-05-15 08:44:31', '2014-05-15 08:44:31')[0m
+  [1m[35mSQL (39.7ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Unhygienic rooms' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (182, 4, '2014-05-15 08:44:31', '2014-05-15 08:44:31')[0m
+  [1m[35mSQL (39.0ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Unhygienic bedings' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (182, 5, '2014-05-15 08:44:31', '2014-05-15 08:44:31')[0m
+  [1m[35mSQL (47.6ms)[0m  COMMIT
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.3ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Delay treatment' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (182, 6, '2014-05-15 08:44:31', '2014-05-15 08:44:31')[0m
+  [1m[35mSQL (38.4ms)[0m  COMMIT
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY votes.vote_id DESC LIMIT 1[0m
+  [1m[35mConcern Load (0.2ms)[0m  SELECT `concerns`.* FROM `concerns` WHERE `concerns`.`name` = 'Careless Nurses' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  describe `vote_concerns`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `vote_concerns` (`vote_id`, `concern_id`, `created_at`, `updated_at`) VALUES (182, 7, '2014-05-15 08:44:31', '2014-05-15 08:44:31')[0m
+  [1m[35mSQL (37.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/votes/comment?service=Radiology
+Completed 302 Found in 498ms
+
+
+Started GET "/votes/comment?service=Radiology" for 127.0.0.1 at 2014-05-15 10:44:31 +0200
+  Processing by VotesController#comment as HTML
+  Parameters: {"service"=>"Radiology"}
+Rendered votes/comment.rhtml within layouts/application (2.9ms)
+Completed 200 OK in 6ms (Views: 5.9ms | ActiveRecord: 350.0ms)
+
+
+Started GET "/votes/leavecomment/" for 127.0.0.1 at 2014-05-15 10:44:32 +0200
+  Processing by VotesController#leavecomment as HTML
+Rendered votes/leavecomment.rhtml within layouts/application (0.8ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/votes/save_comment" for 127.0.0.1 at 2014-05-15 10:44:51 +0200
+  Processing by VotesController#save_comment as HTML
+  Parameters: {"comment"=>"this is how things are supposd to be done"}
+  [1m[36mService Load (0.1ms)[0m  [1mSELECT `services`.* FROM `services` WHERE `services`.`name` = 'Radiology' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `comments`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `comments` (`service_id`, `comment`, `created_at`, `updated_at`) VALUES (14, 'this is how things are supposd to be done', '2014-05-15 08:44:51', '2014-05-15 08:44:51')
+  [1m[36mSQL (74.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/votes/index
+Completed 302 Found in 118ms
+
+
+Started GET "/votes/index" for 127.0.0.1 at 2014-05-15 10:44:51 +0200
+  Processing by VotesController#index as HTML
+Rendered votes/index.rhtml within layouts/barcode (1.7ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 76.5ms)
+
+
+Started GET "/stylesheets/multiTouch.css" for 127.0.0.1 at 2014-05-15 10:44:51 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/multiTouch.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/stylesheets/dashboard.css" for 127.0.0.1 at 2014-05-15 10:44:51 +0200
+
+ActionController::RoutingError (No route matches "/stylesheets/dashboard.css"):
+  
+
+Rendered /var/lib/gems/1.9.1/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
