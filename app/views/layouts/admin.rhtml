@@ -1,0 +1,12 @@
+<html>
+
+	 <%= link_to("Home", {:action => 'index'}, :class => 'back-link') %>
+	 <%= link_to("reports", {:action =>'second'}, :class => 'action 1')%>
+       	 <%= link_to("Admin", {:action =>'#'}, :class => 'action 3')%>
+         <%= link_to("Logout", {:action =>'#'}, :class => 'action 4')%>
+
+
+<%= yield %>
+
+
+</html>
