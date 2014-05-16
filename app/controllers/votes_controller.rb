@@ -38,8 +38,6 @@ class VotesController < ApplicationController
 	 end
 	
 	def assesslevel
-	
-		#raise params.to_yaml
 		client_id = params[:client_id]
 		selected_service = params[:service_sel]
 		
@@ -70,31 +68,43 @@ class VotesController < ApplicationController
 		
 		if vote.save
 			
+				
+			if !(params[:concerns].nil?)
+	
 				concern= params[:concerns]
 				concern.each do |f|
 				vote_concern 	        = VoteConcern.new
 				vote_concern.vote_id    = Vote.last.id
 				vote_concern.concern_id = Concern.find_by_name(f).id
 				vote_concern.save
+				end
+			end 
+				redirect_to :controller=>"votes", :action=>"comment", :service => params[:service_choice]
+	       end 
 			
-			   	end if !(params[:concern].nil?)
-			#alert[:notice]= "Thank you for voting.BYE!!!"
-			redirect_to :controller=>"votes", :action=>"comment", :service => params[:service_choice]
-			
-		end
-         		
-	end 
+        end 
 
 	def comment
-	
-	@service = params[:service_choice]
-	
+
+		$service = params[:service]
+
 	end
 	
 	def save_comment
 
-	redirect_to :controller=>"votes", :action=>"index"
+		serv = $service
+		if !(params[:comment].nil?) 
+			
+			new_comment = Comment.new
+			new_comment.service_id = Service.find_by_name(serv).id
+			new_comment.comment =  params[:comment]	
+			new_comment.save
+			
+	 		redirect_to :controller=>"votes", :action=>"index"
+	       	else
+			redirect_to :controller=>"votes", :action=>"index"
 
+        	end
 	end
 	
 

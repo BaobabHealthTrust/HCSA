@@ -37,11 +37,21 @@
 		<div>
 		THANK YOU FOR VOTING
 		</div>
-		
-	<input type="submit" value="FINISH"/>   
-	<input type="submit" value="COMMENT"/> 
-	  
 	
+	<!--<% i=0 %>
+	<% while(i<10)%>
+	<%= button_to('button_' + i.to_s)%>
+	<%i+=1%>
+	<% end%>	-->
+	
+	<input type="submit" value="FINISH"/>   
+	<input type="button" value="COMMENT" name="comment" onmousedown=" window.location='/votes/leavecomment/'">  
+	<!--<script>
+		for(i=0; i<=2; i++){
+			h = document.getElementById('header');
+			h.innerHTML += "<input type='button' value='comment here'>"	
+		}
+	</script>-->
 	</form>
     </body>
 
