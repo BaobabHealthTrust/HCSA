@@ -4,6 +4,8 @@ Cvsa::Application.routes.draw do
 
   get "admin/index"
 
+  get "admin/login"
+
 resources :services
 
 #resourses :vote

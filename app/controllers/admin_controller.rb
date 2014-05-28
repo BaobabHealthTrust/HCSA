@@ -15,4 +15,13 @@ class AdminController < ApplicationController
 		@concerns = Concern.all
 	end
 
+	
+	def listservice
+		@service = Service.all
+	end
+
+	def login
+
+	end
+
 end

@@ -1,0 +1,27 @@
+<h1>Second page</h1>
+
+	 
+
+<div class="subject list">
+  <h2>List services</h2>
+  
+  
+  <table>
+    
+    <% @service.each do |service| %>
+    <tr>
+      <td><%= service.name %></td>
+      <td class="actions">
+        <%= link_to("Edit", {:action => '#' }, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => '#'}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+ <tr>
+
+    <td>
+	<%= link_to("Add New Service", {:action => 'login'}, :class => 'action new') %>
+   </td>
+   </tr>
+  </table>
+</div>
