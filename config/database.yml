@@ -12,7 +12,11 @@ development:
   database: HCSA_dev
   pool: 5
   username: root
+<<<<<<< HEAD
   password:	basic	
+=======
+  password:	chiso@22	
+>>>>>>> ecf56b2d04447339e28195d94f1d3aeafc1254c4
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -25,7 +29,11 @@ test:
   database:	HCSA_test
   pool: 5
   username: root
+<<<<<<< HEAD
   password:	basic	
+=======
+  password:	chiso@22	
+>>>>>>> ecf56b2d04447339e28195d94f1d3aeafc1254c4
   socket: /var/run/mysqld/mysqld.sock
 
 production:
