@@ -1,0 +1,22 @@
+<h1>ADD CONCERN</h1>
+
+<%= form_for(:add_concern, :url => {:action => 'addConcerns'}) do |f| %>
+
+<table summary="Subject form fields">
+<tr> 
+	<th>Name</th> 
+		<td><%= f.text_field(:name) %></td> 
+</tr> 
+ 
+
+</table><br><br>
+
+<div class="form-buttons"> 
+<%= submit_tag("Add Concerns") %> 
+</div>
+
+<% end %>
+
+
+
+
