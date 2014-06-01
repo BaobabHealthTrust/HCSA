@@ -7,8 +7,7 @@ resources :services
 root :to => 'Votes#index'
 #resourses :vote
 
-##########services########################
-#get "service/serviceselect"
+
 
 ###########votes#######################
 get	"votes/index"
@@ -35,7 +34,7 @@ get     "votes/leavecomment"
 
 get    "votes/save_comment"
 
-
+##########################################
 
 
 
