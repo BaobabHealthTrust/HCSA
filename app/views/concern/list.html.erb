@@ -1,0 +1,27 @@
+<div class="concern list">
+	<h2>Concern</h2>
+
+   <table class="listing" summary="Concern list">
+     <tr class="header">
+	<th>&nbsp;</th>
+	<th>Concern;</th>
+	<th>Visible;</th>
+	<th>Pages;</th>
+	<th>Actions;</th>
+     </tr>
+     <% @concern.each do |concern| %>
+     <tr>
+	<td><%= concern.position %></td>
+	<td><%= concern.name %></td>
+	<td class="center"><%= concern.visible ? 'Yes' : 'No' %></td>
+	<td class="center"><%= concern.pages.size %></td>
+	<td class="actions">
+	   <%= link_to("Show", {:action => 'show', :id => concern.id}, :class => 'action show') %>
+	   <% link_to("Edit", '#', :class => 'action edit') %>
+	    <% link_to("Delete", '#', :class => 'action delete') %>
+	</td>
+       </tr>
+       <% end %>
+     </table>
+</div>
+	

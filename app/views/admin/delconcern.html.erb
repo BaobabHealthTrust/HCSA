@@ -1,0 +1,21 @@
+
+
+
+<div> 
+
+
+<h2>Delete Concern</h2>
+
+ <%= form_for(:concern, :url => {:action => 'destroy', :id => @concern.id}) do |f| -%>
+
+<p>Are you sure you want to permanently delete this concern?</p> 
+
+<p><%= @concern.name %></p> 
+
+<div class="form-buttons"> 
+  <%= submit_tag("Delete Concern") %> 
+</div>
+
+ <% end %> </div> <br><br>
+
+<%= link_to("<< Return to List", {:action => 'listconcerns'}, :class => 'back-link') %>  

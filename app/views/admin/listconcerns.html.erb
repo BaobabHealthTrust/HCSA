@@ -1,0 +1,31 @@
+<h1>CONCERNS ADMIN PAGE </h1>
+
+	 
+
+<div class="subject list">
+  <h2>Concerns</h2>
+  
+
+
+  <table>
+    
+    <% @concerns.each do |concerns| %>
+    <tr>
+      <td><%= concerns.name %></td>
+      <td class="actions">
+        <%= link_to("Edit", {:action => '#' }, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delconcern', :id => concerns.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+
+
+<tr>
+
+    <td>
+	<%= link_to("Add New concern", {:action => 'addconcerns'}, :class => 'action new') %>
+   </td>
+</tr>
+
+  </table>
+</div>

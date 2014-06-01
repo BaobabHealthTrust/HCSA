@@ -2,6 +2,13 @@ Cvsa::Application.routes.draw do
 
 
 
+<<<<<<< HEAD
+  get "admin/index"
+
+  get "admin/login"
+
+=======
+>>>>>>> ecf56b2d04447339e28195d94f1d3aeafc1254c4
 resources :services
 
 root :to => 'Votes#index'

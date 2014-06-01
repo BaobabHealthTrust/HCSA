@@ -1,0 +1,24 @@
+<h1>ADD CONCERN</h1>
+
+
+<form name = "concern" action = "/concern/create" method = "post">
+
+
+  <%Concern.all.each do |concern|%>
+   <%=concern.name%><br />
+
+	
+   <%end%>
+
+<input type="text" name="add_concern" >
+<input type = "submit" value = "add concern" name = "submit_concern">
+
+<input name="delete " type="button" value="Delete marked" style="position:absolute;left:377px;top:415px;z-index:0">
+
+
+<p>
+THE TIME IS <%= Time.now %>
+</p>
+
+
+
