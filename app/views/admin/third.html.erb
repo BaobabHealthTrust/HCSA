@@ -4,11 +4,9 @@
 	 
 					
 	 	<form action = "/admin/forth" method = "post" >
-		Choose department... 
-		<%= select_tag("service", options_for_select(@service.collect{|service|service.name}))%><br><br><br><br>
-         	
-				
-
+			Choose department:
+			<%= select_tag("service", options_for_select(@service.collect{|service|service.name}))%><br><br><br><br>
+		 		
 			Start date
 			 <%= select_date(Time.now) %> <br><br>				  	
 			End date
