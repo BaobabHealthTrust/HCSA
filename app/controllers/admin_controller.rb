@@ -10,6 +10,10 @@ class AdminController < ApplicationController
 	end
 
 	def forth
+
+		@service_selected = params[:service]
+
+
 		@votes = Vote.all
 		@satlevel = Satlevel.all
 	 
