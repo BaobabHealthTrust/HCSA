@@ -8,39 +8,63 @@
 This is a report from //date// to //date//
  <br><br><br><br>	
 <%= " REPORT" %> <br> 
- 
-<table border = 2>
-   <tr width = "100%">
-     <th>DATE</th>
-      <% @satlevel.each do |satlevel| %>
-     <th><%= satlevel.name%></th>
-      <% end %>
-   </tr>
 
-<% @votes.each do |vote| %>
-  <tr>
-    <td><%= vote.created_at.strftime("%d %B %Y" )%></td>
-  </tr>
-<% end %>
-</table>
+
+<table border = 2>
  
+   <tr width = "100%">
+	
+     <th>DATE</th>     
+	<% @result2.each do |result| %> 
+     <th><%= result.name%></th>
+         <% end%>
+   </tr>
+ 
+    <% @result2.each do |result| %> 
+  <tr> 
+	<td><%= result.date %></td>
+ 	<% @result2.each do |result| %>
+	 <td><%= result.total_votes %></td>	
+	 <% end %>
+	<% end %>
+    
+  </tr>
+	<tr>
+	
+	</tr>
+
+
+</table>
+  
 <br><br><br>
-	total votes : <br>
-	positive responses :<span length = "5%"></span>	percetage: <br>
- 	negative responses :<span width = "5%"></span> 	percetage: <br><br><br>	
+ 
 
 <table border = 2>
 	<tr>
 		<th>CONCERN</th>
 		<th>NUMBER</th>
 	</tr>
-	<% @concerns.each do |concerns|%>
-	<tr>
 	
-		<td><%= concerns.name %></td>
+	<% @concern2.each do |concern| %>
+	<tr>	
+	<td><%= concern.name%></td>
+	<td><%= concern.total%></td>
 	<% end %>
 	</tr>
+	 
+
+
+	
+		
+
 </table><br><br><br>
+
+
+		
+				
+   <br><br>	
+
+		
 
 	 <input type="submit" value="Create a PDF"/>
 
