@@ -47,6 +47,24 @@ class AdminController < ApplicationController
 	redirect_to(:action => 'listconcerns') 
 	end 
 
+	def editconcern
+    @concern = Concern.find(params[:id])
+  end
+  
+  def update
+    # Find object using form parameters
+    @concern = Concern.find(params[:id])
+    # Update the object
+    if @concern.update_attributes(params[:concern])
+      # If update succeeds, redirect to the list action
+      redirect_to(:action => 'listconcerns', :id => @concern.id)
+    else
+      # If save fails, redisplay the form so user can fix problems
+      render('editconcern')
+    end
+  end
+    
+
 
 	def login
 
