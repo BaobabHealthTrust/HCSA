@@ -2,16 +2,10 @@ Cvsa::Application.routes.draw do
 
 
 
-<<<<<<< HEAD
   get "admin/index"
 
-  get "admin/login"
-
-=======
->>>>>>> ecf56b2d04447339e28195d94f1d3aeafc1254c4
 resources :services
 
-root :to => 'Votes#index'
 #resourses :vote
 
 ##########services########################
@@ -114,5 +108,5 @@ get    "votes/save_comment"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+   match ':controller(/:action(/:id(.:format)))'
 end
