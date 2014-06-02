@@ -13,7 +13,11 @@
     <tr>
       <td><%= concerns.name %></td>
       <td class="actions">
+<<<<<<< HEAD
         <%= link_to("Rename", {:action => 'editconcern', :id => concerns.id }, :class => 'action edit') %>
+=======
+        <%= link_to("Edit", {:action => 'editconcern', :id => concerns.id}, :class => 'action edit') %>
+>>>>>>> 8df718f1432cdbc32dae6884212bfdbeb34b8eac
         <%= link_to("Delete", {:action => 'delconcern', :id => concerns.id}, :class => 'action delete') %>
       </td>
     </tr>

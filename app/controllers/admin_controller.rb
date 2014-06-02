@@ -12,7 +12,25 @@ class AdminController < ApplicationController
 	def forth
 		@votes = Vote.all
 		@satlevel = Satlevel.all
-		@concerns = Concern.all
+	 
+
+	
+		@result = Satlevel.joins(:votes)
+		@result2 = @result.find_by_sql("select name, date, count(*) as 'total_votes' from satlevels left join votes on
+ 						satlevels.satlevel_id = votes.satlevel_id group by satlevels.satlevel_id ")
+		
+		
+		@concern = Concern.joins(:vote_concerns)
+		@concern2 = @concern.find_by_sql(" select name, count(*) as 'total' from vote_concerns join concerns on 
+						   concerns.concern_id = vote_concerns.concern_id group by concerns.concern_id")
+
+		
+		@result = Satlevel.select('satlevels.name, votes.date, count(votes.*) as total_votes')
+                                  .joins(:votes)
+                                  .group('satlevels.name, votes.date')
+                                  .order('satlevels.name, votes.date')		
+		
+
 	end
 
 	
@@ -47,7 +65,28 @@ class AdminController < ApplicationController
 	redirect_to(:action => 'listconcerns') 
 	end 
 
+<<<<<<< HEAD
 	def addService
+=======
+	def editconcern
+    @concern = Concern.find(params[:id])
+  end
+  
+  def update
+    # Find object using form parameters
+    @concern = Concern.find(params[:id])
+    # Update the object
+    if @concern.update_attributes(params[:concern])
+      # If update succeeds, redirect to the list action
+      redirect_to(:action => 'listconcerns', :id => @concern.id)
+    else
+      # If save fails, redisplay the form so user can fix problems
+      render('editconcern')
+    end
+  end
+    
+
+>>>>>>> 8df718f1432cdbc32dae6884212bfdbeb34b8eac
 
 	service = Service.new(params[:add_service])
     	
@@ -103,3 +142,8 @@ class AdminController < ApplicationController
 	end
 	 
 end
+
+
+
+
+ 
