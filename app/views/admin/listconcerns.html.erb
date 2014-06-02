@@ -13,7 +13,7 @@
     <tr>
       <td><%= concerns.name %></td>
       <td class="actions">
-        <%= link_to("Edit", {:action => '#' }, :class => 'action edit') %>
+        <%= link_to("Rename", {:action => 'editconcern', :id => concerns.id }, :class => 'action edit') %>
         <%= link_to("Delete", {:action => 'delconcern', :id => concerns.id}, :class => 'action delete') %>
       </td>
     </tr>
@@ -23,7 +23,7 @@
 <tr>
 
     <td>
-	<%= link_to("Add New concern", {:action => 'addconcerns'}, :class => 'action new') %>
+	<br><br><%= link_to("Add New concern", {:action => 'addconcerns'}, :class => 'action new') %>
    </td>
 </tr>
 

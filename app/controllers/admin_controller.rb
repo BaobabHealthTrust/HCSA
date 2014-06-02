@@ -41,15 +41,65 @@ class AdminController < ApplicationController
  	@concern = Concern.find(params[:id]) 
 	end 
 
-	def destroy 
+	def destroyConcern 
 	Concern.find(params[:id]).destroy 
 	flash[:notice] = "Concern deleted." 
 	redirect_to(:action => 'listconcerns') 
 	end 
 
+	def addService
 
-	def login
+	service = Service.new(params[:add_service])
+    	
 
+  	 	 if service.save
+		  flash[:notice] = "service added."
+   		   redirect_to :action=>"listservice"
+    		end
+
+	
 	end
 
+
+	def delservice
+ 	@service = Service.find(params[:id]) 
+	end 
+
+	def destroyService 
+	Service.find(params[:id]).destroy 
+	flash[:notice] = "service deleted." 
+	redirect_to(:action => 'listservice') 
+	end 
+
+
+	def editconcern
+	 @concern = Concern.find(params[:id]) 
+	end 
+	
+	def updateConcern 
+		@concern = Concern.find(params[:id]) 
+
+		if @concern.update_attributes(params[:concern]) 
+		flash[:notice] = "Concern updated." 
+		redirect_to(:action =>'listconcerns', :id => @concern.id) 
+		else 
+		render('editconcern') 
+		end
+	end
+
+
+	def editservice
+	 @service = Service.find(params[:id]) 
+	end 
+	
+	def updateService 
+		@service = Service.find(params[:id]) 
+		if @service.update_attributes(params[:service]) 
+		flash[:notice] = "Service updated." 
+		redirect_to(:action =>'listservice', :id => @service.id) 
+		else 
+		render('editservice') 
+		end
+	end
+	 
 end

@@ -1,0 +1,27 @@
+<h1>EDIT CONCERN</h1>
+
+<%= form_for(:concern, :url => {:action => 'updateConcern', :id => @concern.id}) do |f| %>
+
+<table summary="Subject form fields">
+<tr> 
+	<th>Name</th> 
+		<td><%= f.text_field(:name) %></td> 
+</tr> 
+ 
+
+</table><br><br>
+
+<div class="form-buttons"> 
+<%= submit_tag("Rename") %> 
+
+<form action ="/admin/listconcerns" >
+<input type="submit" value= "cancel">
+</div>
+
+
+
+<% end %>
+
+
+
+
