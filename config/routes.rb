@@ -1,13 +1,25 @@
 Cvsa::Application.routes.draw do
 
 
+<<<<<<< HEAD
+=======
+
+ 
+>>>>>>> cba7e7cd5a926dcd0a5e15bf98773a8a99add9b7
   get "admin/index"
 
   get "admin/login"
 
   resources :services
 
+<<<<<<< HEAD
   root :to => 'Votes#index'
+=======
+ 
+resources :services
+
+root :to => 'Votes#index'
+>>>>>>> cba7e7cd5a926dcd0a5e15bf98773a8a99add9b7
 #resourses :vote
 
 
