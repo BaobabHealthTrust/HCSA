@@ -6,7 +6,7 @@
   <h2>List services</h2>
   
 
-  <%= link_to("Add New Service", {:action => 'login'}, :class => 'action new') %>
+ 
 
 
   <table>
@@ -15,8 +15,8 @@
     <tr>
       <td><%= service.name %></td>
       <td class="actions">
-        <%= link_to("Edit", {:action => '#' }, :class => 'action edit') %>
-        <%= link_to("Delete", {:action => '#'}, :class => 'action delete') %>
+        <%= link_to("Rename", {:action => 'editservice',  :id => service.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delservice', :id => service.id},  :class => 'action delete') %>
       </td>
     </tr>
     <% end %>
@@ -24,7 +24,7 @@
  <tr>
 
     <td>
-	<%= link_to("Add New Service", {:action => 'login'}, :class => 'action new') %>
+	<br><br><%= link_to("Add New Service", {:action => 'addservice'}, :class => 'action new') %>
    </td>
 </tr>
 

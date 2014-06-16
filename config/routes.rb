@@ -2,16 +2,8 @@ Cvsa::Application.routes.draw do
 
 
 
- 
   get "admin/index"
 
-  get "admin/index"
-
-  get "admin/login"
-
-
-
- 
 resources :services
 
 #resourses :vote
@@ -44,9 +36,6 @@ get     "votes/leavecomment"
 
 get    "votes/save_comment"
 
-get	"Admin/addconcerns"
-
-post	"Admin/addconcerns"
 
 
 
