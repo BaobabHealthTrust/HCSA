@@ -65,9 +65,9 @@ class AdminController < ApplicationController
 	redirect_to(:action => 'listconcerns') 
 	end 
 
-<<<<<<< HEAD
+
 	def addService
-=======
+
 	def editconcern
     @concern = Concern.find(params[:id])
   end
@@ -86,7 +86,7 @@ class AdminController < ApplicationController
   end
     
 
->>>>>>> 8df718f1432cdbc32dae6884212bfdbeb34b8eac
+
 
 	service = Service.new(params[:add_service])
     	
