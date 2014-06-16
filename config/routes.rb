@@ -4,12 +4,26 @@ Cvsa::Application.routes.draw do
 
   get "admin/index"
 
+ 
 resources :services
 
+ 
+  get "admin/login"
+
+  resources :services
+
+
+  root :to => 'Votes#index'
+
+ 
+resources :services
+
+root :to => 'Votes#index'
+
+>>>>>>> 08c0d9f2e636789c23c962232bc5027769edcef2
 #resourses :vote
 
-##########services########################
-#get "service/serviceselect"
+
 
 ###########votes#######################
 get	"votes/index"
@@ -36,6 +50,13 @@ get     "votes/leavecomment"
 
 get    "votes/save_comment"
 
+ 
+
+#####################################
+
+get	"Admin/addconcerns"
+
+post	"Admin/addconcerns"
 
 
 
@@ -108,5 +129,6 @@ get    "votes/save_comment"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-   match ':controller(/:action(/:id(.:format)))'
+  match ':controller(/:action(/:id(.:format)))'
+
 end
