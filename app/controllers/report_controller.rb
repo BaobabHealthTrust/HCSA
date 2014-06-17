@@ -16,6 +16,7 @@ class ReportController < ApplicationController
 		@result = Satlevel.joins(:votes)
 		@result2 = @result.find_by_sql("select name, date, count(*) as 'total_votes' from satlevels left join votes on
  						satlevels.satlevel_id = votes.satlevel_id group by satlevels.satlevel_id ")
+		@votes1 = @result.find_by_sql("select count(*) as 'total' from votes")
 		
 		
 		@concern = Concern.joins(:vote_concerns)
