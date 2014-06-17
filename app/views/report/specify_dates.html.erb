@@ -1,9 +1,9 @@
 <html>		
 
-<h1>third page</h1>
+<h1>Specify dates</h1>
 	 
 					
-	 	<form action = "/report/forth" method = "post" >
+	 	<form action = "/report/make_report" method = "post" >
 			Choose department:
 			<%= select_tag("service", options_for_select(@service.collect{|service|service.name}))%><br><br><br><br>
 		 		

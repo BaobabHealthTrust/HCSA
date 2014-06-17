@@ -14,11 +14,12 @@
 
 	<div class="form-buttons"> 
 		<%= submit_tag("Rename") %>  
-		<input type="submit" value= "Cancel">
-	</div>
+	</div><br><br>
 
 	<% end %>
 
+
+	<%= link_to("<< Return to List", {:action => 'listconcerns'}, :class => 'back-link') %>  
 
 </html>
 

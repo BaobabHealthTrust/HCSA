@@ -2,6 +2,10 @@ Cvsa::Application.routes.draw do
 
 
 
+  get "settings/settings"
+
+  get "report/report"
+
   get "admin/index"
 
  
@@ -20,7 +24,7 @@ resources :services
 
 root :to => 'Votes#index'
 
->>>>>>> 08c0d9f2e636789c23c962232bc5027769edcef2
+ 
 #resourses :vote
 
 

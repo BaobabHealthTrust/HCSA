@@ -1,8 +1,8 @@
 <html>
 
-	 <%= link_to("Home", {:action => 'index'}, :class => 'back-link') %>
-	 <%= link_to("reports", {:action =>'second'}, :class => 'action 1')%>
-       	 <%= link_to("Admin", {:action =>'home'}, :class => 'action 3')%>
+	 <%= link_to("Home", {:controller => 'admin', :action => 'index'}, :class => 'back-link') %>
+	 <%= link_to("Reports", {:controller => 'report', :action =>'reportMenu'}, :class => 'action 1')%>
+       	 <%= link_to("Settings", {:controller => 'settings', :action =>'settingsMenu'}, :class => 'action 3')%>
          <%= link_to("Logout", {:action =>'#'}, :class => 'action 4')%>
 
 
