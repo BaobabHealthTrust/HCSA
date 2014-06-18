@@ -1,0 +1,17 @@
+<html>		
+
+<h1>Specify dates </h1>
+	 
+					
+	 	<form action = "/report/make_general_report" method = "post" >
+
+				
+			Start date
+			 <%= select_date(Time.now) %> <br><br>				  	
+			End date
+			 <%= select_date(Time.now) %> <br><br><br><br>
+
+    		 <input type="submit" value="Submit"/>  
+ 
+
+</html>

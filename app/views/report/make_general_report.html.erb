@@ -1,0 +1,61 @@
+   <HTML>
+  <HEAD>
+  <TITLE>General</TITLE>
+  </HEAD>
+  <BODY>
+
+<br><br>
+<div id="body" style="margin-left:7%;">
+<center>This is a report from //date// to //date//</center>
+ <br><br><br>
+
+	<div id="h3" style="margin-left:60%;">
+        <h3>CHARTS</h3>
+         </div>	 
+	
+     <h4>TOTAL VOTES (All Departments)   : <%= @prints.ceil %></h4>
+         
+     <h4>SATISFIED      :     <%= @prints1 %>   Percentage: <%= @percentage1.ceil %> </h4> 
+
+     <h4>UNSATISFIED    :  <%= @prints2 %>      Percentage:   <%= @percentage2.ceil %></h4>
+
+
+
+<table border = "2" width = "500">
+	<tr>
+		<th>SATISFACTION LEVEL</th>
+		<th>NUMBER OF VOTES</th>
+	</tr>
+	
+	<% @result2.each do |total| %>
+	<tr>	
+	<td><%= total.name%></td>
+	<td><%= total.total_votes%></td>
+	<% end %>
+	</tr>
+	
+</table><br><br><br>
+
+<table border = "2" width ="500">
+	<tr>
+		<th>CONCERN</th>
+		<th>NUMBER OF VOTES</th>
+	</tr>
+	
+	<% @concern2.each do |concern| %>
+	<tr>	
+	<td><%= concern.name%></td>
+	<td><%= concern.total%></td>
+	<% end %>
+	</tr>		
+
+</table><br><br>
+		
+
+	 <input type="submit" value="Generate PDF"/>
+   </div>
+
+  </BODY>
+  </HTML>
+
+
