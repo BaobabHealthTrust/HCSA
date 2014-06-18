@@ -3,28 +3,25 @@
   <TITLE>General</TITLE>
   </HEAD>
   <BODY>
-<center>
+
 <br><br>
-This is a report from //date// to //date//
- <br><br><br><br>	
-<%= " REPORT" %> <br> 
+<div id="body" style="margin-left:7%;">
+<center>This is a report from //date// to //date//</center>
+ <br><br><br>
 
-
-<table border = "2" width = "800">
- 
-   <tr width = "800%">
+	<div id="h3" style="margin-left:60%;">
+        <h3>CHARTS</h3>
+         </div>	 
 	
-     <th>TOTAL VOTES (All Departments)</th>
-     <% @votes1.each do |all| %>     
-     <th><%= all.total %></th>
-         <% end%>
-   </tr>
-    
-</table>
+     <h4>TOTAL VOTES (All Departments)   : <%= @prints.ceil %></h4>
+         
+     <h4>SATISFIED      :     <%= @prints1 %>   Percentage: <%= @percentage1.ceil %> </h4> 
 
-<br>
+     <h4>UNSATISFIED    :  <%= @prints2 %>      Percentage:   <%= @percentage2.ceil %></h4>
 
-<table border = "2" width = "800">
+
+
+<table border = "2" width = "500">
 	<tr>
 		<th>SATISFACTION LEVEL</th>
 		<th>NUMBER OF VOTES</th>
@@ -39,7 +36,7 @@ This is a report from //date// to //date//
 	
 </table><br><br><br>
 
-<table border = "2" width ="800">
+<table border = "2" width ="500">
 	<tr>
 		<th>CONCERN</th>
 		<th>NUMBER OF VOTES</th>
@@ -56,8 +53,8 @@ This is a report from //date// to //date//
 		
 
 	 <input type="submit" value="Generate PDF"/>
+   </div>
 
-</center>
   </BODY>
   </HTML>
 
