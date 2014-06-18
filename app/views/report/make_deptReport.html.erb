@@ -1,0 +1,63 @@
+   <HTML>
+  <HEAD>
+  <TITLE>Departmental</TITLE>
+  </HEAD>
+  <BODY>
+<center>
+<br><br>
+   <h3> <%= @service_selected %> report from <%= @start_date %>  to <%= @end_date %>   <h3>
+ <br><br><br> 
+
+
+<table border = "2" width = "800">
+ 
+   <tr width = "800%">
+	
+     <th>Total Votes for <%= @service_selected %> Department </th>
+     <% @votes.each do |all| %>     
+     <th><%= all.total %></th>
+         <% end%>
+   </tr>
+    
+</table>
+
+<br>
+
+<table border = "2" width = "800">
+	<tr>
+		<th>SATISFACTION LEVEL</th>
+		<th>NUMBER OF VOTES</th>
+	</tr>
+	
+	<% @result2.each do |total| %>
+	<tr>	
+	<td><%= total.name%></td>
+	<td><%= total.total_votes%></td>
+	<% end %>
+	</tr>
+	
+</table><br><br><br>
+
+<table border = "2" width ="800">
+	<tr>
+		<th>CONCERN</th>
+		<th>NUMBER OF VOTES</th>
+	</tr>
+	
+	<% @concern2.each do |concern| %>
+	<tr>	
+	<td><%= concern.name%></td>
+	<td><%= concern.total%></td>
+	<% end %>
+	</tr>		
+
+</table><br><br>
+		
+
+	 <input type="submit" value="Generate PDF"/>
+	
+</center>
+  </BODY>
+  </HTML>
+
+
