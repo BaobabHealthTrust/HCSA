@@ -1,29 +1,27 @@
-   <HTML>
+    <HTML>
   <HEAD>
   <TITLE>Departmental</TITLE>
   </HEAD>
   <BODY>
-<center>
+
 <br><br>
-   <h3> <%= @service_selected %> report from <%= @start_date %>  to <%= @end_date %>   <h3>
- <br><br><br> 
+<div id="body" style="margin-left:7%;">
+<center><h4> <%= @service_selected %> report from <%= @start_date %>  to <%= @end_date %> </h4></center>
+ <br><br><br>
 
-
-<table border = "2" width = "800">
- 
-   <tr width = "800%">
+	<div id="h3" style="margin-left:60%;">
+        <h3>CHARTS</h3>
+         </div>	 
 	
-     <th>Total Votes for <%= @service_selected %> Department </th>
-     <% @votes.each do |all| %>     
-     <th><%= all.total %></th>
-         <% end%>
-   </tr>
-    
-</table>
+     <h4>TOTAL VOTES (All Departments)   : <%= @prints.ceil %></h4>
+         
+     <h4>SATISFIED      :     <%= @prints1 %>   Percentage: <%= @percentage1.ceil %> </h4> 
 
-<br>
+     <h4>UNSATISFIED    :  <%= @prints2 %>      Percentage:   <%= @percentage2.ceil %></h4>
 
-<table border = "2" width = "800">
+
+
+<table border = "2" width = "500">
 	<tr>
 		<th>SATISFACTION LEVEL</th>
 		<th>NUMBER OF VOTES</th>
@@ -38,7 +36,7 @@
 	
 </table><br><br><br>
 
-<table border = "2" width ="800">
+<table border = "2" width ="500">
 	<tr>
 		<th>CONCERN</th>
 		<th>NUMBER OF VOTES</th>
@@ -55,8 +53,8 @@
 		
 
 	 <input type="submit" value="Generate PDF"/>
-	
-</center>
+   </div>
+
   </BODY>
   </HTML>
 
