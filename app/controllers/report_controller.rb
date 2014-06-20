@@ -10,10 +10,6 @@ class ReportController < ApplicationController
 		 @service =Service.all.delete_if{|service|service.name.blank?}
 	end
 
-	def make_general_report
-		@start_date = params[:start_date]
-	 	@end_date = params[:end_date]
-
 	def make_general_report	
 		@service_selected = params[:service]	
 		@start_date = params[:start_date].to_date.strftime("%Y-%m-%d")
@@ -66,7 +62,21 @@ class ReportController < ApplicationController
 		else
 		@percentage1 = ((@prints1/@prints).round(2))*100
 		@percentage2 = ((@prints2/@prints).round(2))*100
-		end			
+		end
+
+		require 'rubygems'
+                require 'google_chart'
+
+    		# Pie Chart
+    		GoogleChart::PieChart.new('320x200', "Pie Chart",false) do |pc|
+      		pc.data "satisfied", @prints1
+      		pc.data "unsatisfied", @prints2
+      		#pc.data "Peach", 30
+      		#pc.data "Orange", 60
+      		puts "\nPie Chart"
+      		@graph1 = pc.to_url
+ 
+    		end			
 	end
 
 	def make_deptReport		
@@ -134,6 +144,20 @@ class ReportController < ApplicationController
 		else
 		@percentage1 = ((@prints1/@prints).round(2))*100
 		@percentage2 = ((@prints2/@prints).round(2))*100
-		end	 
+		end
+
+		require 'rubygems'
+                require 'google_chart'
+
+    		# Pie Chart
+    		GoogleChart::PieChart.new('320x200', "Pie Chart",false) do |pc|
+      		pc.data "satisfied", @prints1
+      		pc.data "unsatisfied", @prints2
+      		#pc. "Peach", 30
+      		#pc.data "Orange", 60
+      		puts "\nPie Chart"
+      		@graph2 = pc.to_url
+ 
+    		end	 
 	end
 end

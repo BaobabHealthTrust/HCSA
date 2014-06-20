@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+gem 'gchartrb'
+
 gem 'rails', '3.0.9'
 
 # Bundle edge Rails instead:

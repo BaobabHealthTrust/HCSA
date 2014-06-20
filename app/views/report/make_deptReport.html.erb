@@ -1,18 +1,45 @@
     <HTML>
   <HEAD>
   <TITLE>Departmental</TITLE>
+
+	<style type = "text/css">
+
+
+	#graph{
+              position: relative;
+   
+   	      float: right;
+	      padding: 0px 100px 0px 0px;
+   
+        }
+	
+	#plaintxt{
+		margin-left: 7%;
+		
+	}
+
+	#content{
+		border: 5px solid black;
+		width: 1250px;
+		
+	 }
+
+   
+  </style>
   </HEAD>
   <BODY>
 
 <br><br>
-<div id="body" style="margin-left:7%;">
+<div id = "content">
 <center><h4> <%= @service_selected %> report from <%= @start_date %>  to <%= @end_date %> </h4></center>
  <br><br><br>
 
-	<div id="h3" style="margin-left:60%;">
-        <h3>CHARTS</h3>
+	<div id="graph">
+        <h3>CHARTS</h3><br><br><br><br>
+	<%= image_tag(@graph2) %>
          </div>	 
-	
+
+      <div id = "plaintxt">	
      <h4>TOTAL VOTES ( <%= @service_selected %> Department)   : <%= @prints.ceil %></h4>
          
      <h4>SATISFIED      :  <%= @prints1 %>   Percentage: <%= @percentage1.ceil %> </h4> 
@@ -53,6 +80,7 @@
 		
 
 	 <input type="submit" value="Generate PDF"/>
+   </div>
    </div>
 
   </BODY>
