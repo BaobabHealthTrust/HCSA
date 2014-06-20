@@ -24,11 +24,8 @@
 <h1>Specify dates</h1>
 	 
 					
-	 	<form action = "/report/make_deptReport" method = "post" >
-			Choose department:
-			<%= select_tag("service", options_for_select(@service.collect{|service|service.name}))%><br><br> 
+	 	<form action = "/report/make_general_report" method = "post" >
 			
-		 
 		 <table class="halfpage" cellspacing="10px" cellpadding="20px" >
 		 
 

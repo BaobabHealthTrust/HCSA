@@ -12,6 +12,8 @@ class ReportController < ApplicationController
 	end
 
 	def make_general_report
+		@start_date = params[:start_date]
+	 	@end_date = params[:end_date]
 	
 		@result = Satlevel.joins(:votes)
 		@result2 = @result.find_by_sql("select name, date, count(*) as 'total_votes' from satlevels left join votes on
