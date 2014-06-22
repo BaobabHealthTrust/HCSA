@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20140421082011) do
     t.string   "client_id"
     t.integer  "satlevel_id"
     t.integer  "service_id"
-    t.date     "date",        :default => '2014-05-25'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
