@@ -11,12 +11,8 @@
           top:0;
           background: #191970;
           height:100px;
-
-	  
-	  }
-	 
-      
-	</style>
+	 }
+	 </style>
 
 	</head>
 	
@@ -24,20 +20,20 @@
 	      <div id="header">
 	 	 <span style="font-size: 45px;color: #C0C0C0;font-family:arial;">
            		 CHOSE A SERVICE
-          	</span>
+          	 </span>
   		    <img src="/images/vote.jpg" style="float: left;margin-top: 5px;margin-left: 5px;height: 80px;">
            
 	      </div>
 		
-	   <form action = "/votes/checksat" method = "post" >
+	     <form action = "/votes/checksat" method = "post" >
 	
 		<%= select_tag("service", options_for_select(@service.collect{|service|service.name}))%>
 
 		<%= hidden_field_tag("client_id", params[:client_id])%>
 
          	<input type="submit" value="Submit"/>      
-	   </form>
-	
-	</body>
+	     </form>
+	 
+	 </body>
 
 </html>

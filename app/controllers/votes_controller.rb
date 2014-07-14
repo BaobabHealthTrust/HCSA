@@ -2,6 +2,8 @@ class VotesController < ApplicationController
 	
 	def index
 		render :layout => 'barcode'
+		
+
 	end
 
 	def authenticate

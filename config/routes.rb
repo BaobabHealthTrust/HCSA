@@ -2,30 +2,10 @@ Cvsa::Application.routes.draw do
 
 
 
-  get "settings/settings"
-
-  get "report/report"
-
-  get "admin/index"
-
- 
-resources :services
-
- 
-  get "admin/login"
-
-  resources :services
-
-
-  root :to => 'Votes#index'
-
- 
 resources :services
 
 root :to => 'Votes#index'
 
- 
-#resourses :vote
 
 
 
@@ -62,6 +42,32 @@ get	"Admin/addconcerns"
 
 post	"Admin/addconcerns"
 
+################### USER ##############################
+ # match '/login' => "user#login"
+
+  #match '/logout' => "user#logout"
+
+ # match '/verify_user' => "user#verify_user"
+
+  get "user/index"
+
+  get "user/login"
+
+  get "user/logout"
+
+  get "user/create"
+
+  get "user/edit"
+
+  get "user/edit_user"
+
+  post "user/verify_user"
+
+  post "user/save"
+
+  post "user/delete"
+
+  post "user/save_edit"
 
 
 

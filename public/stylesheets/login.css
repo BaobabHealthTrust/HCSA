@@ -1,0 +1,31 @@
+
+.login_form fieldset {
+background: #efe;
+}
+
+.login_form legend {
+color: #dfd;
+background: #141;
+font-family: sans-serif;
+padding: 0.2em 1em;
+}
+
+.login_form label {
+width: 5em;
+float: left;
+text-align: right;
+padding-top: 0.2em;
+margin-right: 0.1em;
+display: block;
+}
+
+.login_form select, .login_form textarea, .login_form input {
+margin-left: 0.5em;
+}
+
+.login_form .submit {
+margin-left: 4em;
+}
+.login_form div {
+margin: 0.5em 0;
+}
