@@ -45,10 +45,12 @@
    	 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
    	 vertical-align: middle;
    	 white-space: nowrap;
+	text-decoration: none;
     }	
 
-   .header-actions {
+   .header-action {
         float: right;
+	
   }
     * {
         -moz-box-sizing: border-box;
@@ -57,14 +59,18 @@
     </style>
     
   </head>
-  <body id="mateme" bgcolor="#C0C0C0">  
+  <body id="mateme" bgcolor="#197994">  
     <div id="container">      
       <div id="content">
        <div id="view_tab1" class="view" style="display: block;">
 
 		<div class="header-action">
-			<a class="button signin" href="/user/login">Admin login</a>
-		</div>
+
+
+			<a class="button " href="/admin/index">Admin login</a>
+
+					</div>
+
 		<center>   
 			<h1>WELCOME <br/><br/>TO <br/><br/><%= image_tag("vote.jpg")%><br/><br/>KAMUZU CENTRAL HOSPITAL</h1>
 					<h2>CLIENT SATISFACTION VOTING SYSTEM</h2>

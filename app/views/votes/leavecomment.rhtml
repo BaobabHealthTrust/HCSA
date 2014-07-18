@@ -2,42 +2,56 @@
 <html>
     <head>
 	<title>concerns</title>	
-	
+
 	<style type="text/css">
 	
-	#header {
-          position:fixed;
-          width:100%;
-          left:0;
-          top:0;
-          background: #191970;
-          height:100px;
+	input
+		 { border-radius: 11px;
+			border-color: #197994;
+			border-width: 3px;
+			border-style: solid;
+          	 	background-color: #eaeaea; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 800px; 
+			height: 50px;
+			font-size: 30px;
+			
+               }
 
-	 }
-	 
-      
-	</style>
+</style>
+	
+	
 
     </head>
-
-    <body>
+	
+	
+	
+     <body>
+	
 	<div id="header">
-	 	 <span style="font-size: 45px;color: #C0C0C0;font-family:arial;">
-           		
-          	 </span>
-  		    <img src="/images/vote.jpg" style="float: left;margin-top: 5px;margin-left: 5px;height: 80px;">
-         </div>
+	 	   <div style="font-size: 32px;color: #eaeaea;font-family:arial;margin-top:2.1%;">
+           		 <center>WRITE YOUR COMMENT OR RECOMMENDATIONS</center>
+          	   </div>
+	   	    </div>
+
 	 
-	 <form action = "/votes/save_comment " method = "post" >
-		<div>
-		leave a comment YOU FOR VOTING
-		</div>
+	<form action = "/votes/save_comment " method = "post" >
 		
-		<input type="text" name="comment" value="" >
-	        <input type="submit" value="FINISH"/>
+		<br><br><br><br><br><br><br><br>
+		<center>
+		<p>
+		<input type="text" name="COMMENT" value=""><br><br><br>
+		</p>
+		<!--<button type="submit" value="FINISH"/>!-->
+		
+	        
+		</center>
 	  
-	  </form>
-     </body>
+	    
+	
+	</form>
+    </body>
 
 </html>
 

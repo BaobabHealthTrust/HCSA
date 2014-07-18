@@ -1,39 +1,91 @@
 <html>
 	<head>
 	<title>services</title>	
-	
+
 	<style type="text/css">
+	.button
+		{ border-radius: 5px;
+          	 	background-color: #197994; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 250px; 
+			height: 90px;
+			font-size: 25px;
+			color: #eaeaea;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;
+			
+               }
+
+	a{
+		display:block;
+	}
+
+</style>
 	
-	#header {
-          position:fixed;
-          width:100%;
-          left:0;
-          top:0;
-          background: #191970;
-          height:100px;
-	 }
-	 </style>
+	
+	
 
 	</head>
 	
 	<body>
+
+
+		<div id="header">
+	 	   <div style="font-size: 32px;color: #eaeaea;font-family:arial;margin-top:2.1%;">
+           		 <center>CHOOSE A SERVICE</center>
+          	   </div>
+		   </div>
+
+
+<center>
+
+ <form action = "/votes/checksat" method = "post"type="hidden" >
+
+		
+<table cellpadding="15">
+	<% @rows.each do |row| %>
+	<tr>
+	     <% row.each do |service| %>
+
+		
+		<td><%=link_to service.name.upcase, {:controller => "votes", :action => "checksat", :id => service.id }, :class => "button" %></td>
+		<%end%>
+		<%= hidden_field_tag("service_id", params[:service_id])%>
+		<input type="hidden">
+	
+	</tr>
+	<% end %>
+
 	      <div id="header">
 	 	 <span style="font-size: 45px;color: #C0C0C0;font-family:arial;">
            		 CHOSE A SERVICE
           	 </span>
-  		    <img src="/images/vote.jpg" style="float: left;margin-top: 5px;margin-left: 5px;height: 80px;">
            
 	      </div>
 		
 	     <form action = "/votes/checksat" method = "post" >
+
 	
-		<%= select_tag("service", options_for_select(@service.collect{|service|service.name}))%>
 
-		<%= hidden_field_tag("client_id", params[:client_id])%>
+</table><br><br>
 
-         	<input type="submit" value="Submit"/>      
+	
+		
+
+</form>
+
+
+<center>
+	
+	</body>
+
+         	 
 	     </form>
 	 
 	 </body>
+
 
 </html>
