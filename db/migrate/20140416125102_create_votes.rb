@@ -5,7 +5,6 @@ class CreateVotes < ActiveRecord::Migration
 	t.string  :client_id
       	t.integer :satlevel_id
       	t.integer :service_id
-	t.date "date", :default => Date.today
 
       	t.timestamps
     end

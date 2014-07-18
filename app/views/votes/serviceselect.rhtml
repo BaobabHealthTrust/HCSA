@@ -26,10 +26,21 @@
 </style>
 	
 	
+	#header {
+          position:fixed;
+          width:100%;
+          left:0;
+          top:0;
+          background: #191970;
+          height:100px;
+	 }
+	 </style>
+
 
 	</head>
 	
 	<body>
+
 
 		<div id="header">
 	 	   <div style="font-size: 32px;color: #eaeaea;font-family:arial;margin-top:2.1%;">
@@ -56,6 +67,17 @@
 	
 	</tr>
 	<% end %>
+
+	      <div id="header">
+	 	 <span style="font-size: 45px;color: #C0C0C0;font-family:arial;">
+           		 CHOSE A SERVICE
+          	 </span>
+  		    <img src="/images/vote.jpg" style="float: left;margin-top: 5px;margin-left: 5px;height: 80px;">
+           
+	      </div>
+		
+	     <form action = "/votes/checksat" method = "post" >
+
 	
 
 </table><br><br>
@@ -65,8 +87,15 @@
 
 </form>
 
+
 <center>
 	
 	</body>
+
+         	<input type="submit" value="Submit"/>      
+	     </form>
+	 
+	 </body>
+
 
 </html>

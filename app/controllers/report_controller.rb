@@ -16,7 +16,7 @@ class ReportController < ApplicationController
 	 	@end_date = params[:end_date].to_date.strftime("%Y-%m-%d")
 	
 		@result = Satlevel.joins(:votes)
-		@result2 = @result.find_by_sql("select name, date, count(*) as 'total_votes'
+		@result2 = @result.find_by_sql("select name, count(*) as 'total_votes'
 						from satlevels left join votes on satlevels.satlevel_id = votes.satlevel_id 
 						where votes.created_at >='#@start_date'
    					        and votes.created_at <= date_add('#@end_date',INTERVAL 1 DAY)
@@ -88,7 +88,7 @@ class ReportController < ApplicationController
 		@id = @service.service_id 
 	 	
 		@result = Satlevel.joins(:votes)
-		@result2 = @result.find_by_sql("select name, date, count(*) as 'total_votes' 
+		@result2 = @result.find_by_sql("select name, count(*) as 'total_votes' 
 						from satlevels left join votes 
 						on satlevels.satlevel_id = votes.satlevel_id 
 						where votes.service_id = '#@id' 
