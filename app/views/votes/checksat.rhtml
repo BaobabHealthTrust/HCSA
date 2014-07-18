@@ -2,41 +2,73 @@
 <html>
 	<head>
 	<title>question</title>	
-	
-	 <style type="text/css">
-	
-	#header {
-          position:fixed;
-          width:100%;
-          left:0;
-          top:0;
-          background: #191970;
-          height:100px;
 
-	 }
+	
+	<style type="text/css">
+	.button
+		{ border-radius: 5px;
+          	 	background-color: #197994; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 250px; 
+			height: 90px;
+			font-size: 25px;
+			color: #eaeaea;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;
+			
+               }
+
+	a{
+		display:block;
+	}
+
+</style>
+	
+	
+	
 	 
-      
-	 </style>
 	</head>
 	
 	<body>
 		<div id="header">
-	 	   <span style="font-size: 45px;color: #C0C0C0;font-family:arial;">
-           		 ARE YOU SATISFIED WITH THE SERVICE YOU HAVE RECEIVED IN <%=@service_selected%>?
-          	   </span>
+	 	   <div style="font-size: 32px;color: #eaeaea;font-family:arial;margin-top:1.5%;">
+           		 <center>ARE YOU SATISFIED WITH THE SERVICE YOU HAVE RECEIVED IN <br> <%=$service_selected.upcase%>?</center>
+          	   </div>
   		    <!--<img src="/images/vote.jpg" style="float: left;margin-top: 5px;margin-left: 5px;height: 80px;">
            		-->
 	        </div>
 
-		
-	 <form action = "/votes/assesslevel" method = "post" >
-		
-		<%= hidden_field_tag("client_id", @hash_id)%>
-		<%= hidden_field_tag("service_sel", @service_selected)%>
-		<%= select_tag("satlevel", options_for_select(@sat.collect{|sat|sat.name}))%>
+	
+	<form action = "/votes/checksat" method = "post" >
 
-         <input type="submit" value="Submit"/>      
-	</form>
+<center>		
+<table cellpadding="15">
+	<% @rows.each do |row| %>
+	<tr>
+	     <% row.each do |satlevel| %>
+
+		
+		<td><%=link_to satlevel.name.upcase, {:controller => "votes", :action => "assesslevel", :id => satlevel.id }, :class => "button" %></td>
+		<%end%>
+
+		
+		<!--<%= hidden_field_tag("client_id", @hash_id)%>
+		<%= hidden_field_tag("service_sel", @service_selected)%>-->		
+	
+	</tr>
+	<% end %>
+	
+
+</table><br><br>
+</center>
+
+</form>
+
+
+	
 	</body>
 
 </html>

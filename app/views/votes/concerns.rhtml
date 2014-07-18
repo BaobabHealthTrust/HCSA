@@ -2,39 +2,31 @@
     <head>
 	<title>concerns</title>	
 	
-	<style type="text/css">
 	
-	#header {
-          position:fixed;
-          width:100%;
-          left:0;
-          top:0;
-          background: #191970;
-          height:100px;
-
-	 }
-	 
-      
-	</style>
+  
 
     </head>
 	
 	
 	
      <body>
+
+	<center>
 	
 	<div id="header">
-	 	 <span style="font-size: 45px;color: #C0C0C0;font-family:arial;">
-           		 CHOSE THE PROBLEMS YOU HAD IN <%=@service %>
-          	 </span>
-  		    <img src="/images/vote.jpg" style="float: left;margin-top: 5px;margin-left: 5px;height: 80px;">
-           
-	   </div>
+	 	 <div style="font-size: 32px;color: #eaeaea;font-family:arial;margin-top:2.1%;">
+           		 CHOOSE THE PROBLEMS YOU HAD IN <%=$service_selected.upcase %>
+          	  		    
+           	   </div>
+	</center>
+
+	<br><br><br>
 
 	 
 	<form action = "/votes/save_vote " method = "post" >
 	
 		<%@concerns.each do |t|%>
+	
 		<li>
 		    <%= check_box_tag("concerns[]", t.name)%>
 		    <%= t.name %>
@@ -49,6 +41,7 @@
 	
 	</form>
     </body>
+
 
 </html>
 
