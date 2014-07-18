@@ -1,5 +1,7 @@
 class UserController < ApplicationController
-  def index
+  
+ layout 'admin'
+ def index
 
  	check_logged_in
 
@@ -40,7 +42,7 @@ class UserController < ApplicationController
       user = User.find_by_username(params[:username])
       session[:user_id] = user.id
       User.current = user
-      redirect_to :controller => :home
+      redirect_to :controller => :admin
     end
   end
 

@@ -1,0 +1,12 @@
+<html>
+
+	 <%= link_to("Home", {:controller => 'admin', :action => 'index'}, :class => 'back-link') %>
+	 <%= link_to("Reports", {:controller => 'report', :action =>'reportMenu'}, :class => 'action 1')%>
+       	 <%= link_to("Settings", {:controller => 'settings', :action =>'settingsMenu'}, :class => 'action 3')%>
+         <%= link_to("Logout", { :controller => 'votes',:action =>'index' }, :class => 'action 4')%>
+
+
+<%= yield %>
+
+
+</html>

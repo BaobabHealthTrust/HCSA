@@ -26,16 +26,24 @@
    
   </style>
   </HEAD>
-  <BODY>
+ <center> <BODY >
 
 <br><br>
-<div id = "content">
-<center><h4>THIS IS A GENERAL REPORT FROM <%=@start_date%> TO <%= @end_date%><h4></center>
- <br><br><br>
 
-	<div id="graph">
-        <h3>CHARTS</h3><br><br><br><br>
-	<%= image_tag(@graph1) %>
+<div style="width: 100%;">
+  <table class="display"  width="100%">
+    <thead>
+    <tr>
+     <h4>THIS IS A GENERAL REPORT FROM <%=@start_date%> TO <%= @end_date%><h4>
+ 	</tr>
+    </thead>
+    <tbody>
+  
+
+
+	<!--<div id="graph">
+        <h3>CHARTS</h3><br><br><br><br>-->
+	
          </div>	 
 
 	<div id="plaintxt">       
@@ -59,9 +67,9 @@
 	<% end %>
 	</tr>
 	
-</table><br><br><br>
+</table></center><br><br><br>
 
-<table border = "2" width ="500">
+<center><table border = "2" width ="500">
 	<tr>
 		<th>CONCERN</th>
 		<th>NUMBER OF VOTES</th>
@@ -74,13 +82,15 @@
 	<% end %>
 	</tr>		
 
-</table><br><br>
-	 <input type="button" value="Generate PDF" onClick="window.print()" />
+</table></center><br><br>
+	 <center><input type="button" value="Generate PDF" onClick="window.print()" /><center>
    </div>
-   </div>
-
+   
+    </tbody>
+  </table></center>
+</div>
  
-  </BODY>
+  </BODY></center>
   </HTML>
 
 

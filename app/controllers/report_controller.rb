@@ -76,7 +76,8 @@ class ReportController < ApplicationController
       		puts "\nPie Chart"
       		@graph1 = pc.to_url
  
-    		end			
+    		end	
+	   render :layout => 'report_layout'		
 	end
 
 	def make_deptReport		
@@ -159,5 +160,6 @@ class ReportController < ApplicationController
       		@graph2 = pc.to_url
  
     		end	 
+		render :layout => 'report_layout'
 	end
 end
