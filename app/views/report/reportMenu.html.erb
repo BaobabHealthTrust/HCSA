@@ -1,11 +1,70 @@
-<h1>Second page</h1>
+<script type="text/javascript">
 
-	 
+  function genReport()
+  {
 
-<div class="">  
-	<h4>Choose report type</h4>
+      var path = [
+        "/report/specify_details?type=Departmental report",
+        "/report/specify_details?type=General report",
+      
+      ];
+      var icons = ['aggregate.png','Hospital-icon.png'];
+      var title = [ 'Departmental Report', 'General Report'];
 
-	<%= link_to("Department Reports", {:action =>'reportType'}, :class => 'action 3')%> <br><br>
-         <%= link_to("General reports", {:action =>'reportType_general'}, :class => 'action 3')%>
+    loadMenu(title,icons,path);
+
+  }
+
+  function loadMenu(fields, images,paths){
+    document.getElementById("panel").innerHTML = "";
+
+    for(var i = 0; i < fields.length; i++){
+
+      var div = document.createElement("div");
+      div.style.width = "200px";
+      div.style.height = "160px";
+      div.style.textAlign = "center";
+      div.style.cssFloat = "left";
+      div.style.padding = "5px";
+      div.style.opacity = "1";
+      div.style.cursor = "pointer";
+      div.setAttribute("link", paths[i]);
+      div.className = "menu_button blue";
+
+      div.onclick = function(){
+        window.location = this.getAttribute("link");
+      }
+
+      document.getElementById("panel").appendChild(div);
+
+      var img = document.createElement("img");
+      img.src = "/images/" + images[i];
+      img.setAttribute("alt", fields[i]);
+      img.height = "90";
+      img.style.margin = "5px";
+
+      div.appendChild(img);
+
+      div.innerHTML += "<div style='padding: 5px; margin-top: 10px;'>" + fields[i] + "</div>";
+
+    }
+  }
+
+  setTimeout("genReport()", 200);
+</script>
+
+<style type="text/css">
+
+  td{
+    text-align: center;
+  }
+</style>
+
+
+
+<div id='panel' style="height: 80%; overflow:auto;">
+
 
 </div>
+
+

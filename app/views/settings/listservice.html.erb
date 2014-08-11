@@ -1,32 +1,89 @@
-<h1>Second page</h1>
+<link rel="stylesheet" type="text/css" href="/stylesheets/demo_table.css" />
+<script type="text/javascript" language="javascript" src="/javascripts/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="/javascripts/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('#articles').dataTable({
+            "aaSorting": [[ 2, "desc" ]],
+            'iDisplayLength': 10,
+            "bLengthChange": false
+        });
+    } );
+</script>
 
-	 
+<style type="text/css">
+    div{
+        font-size: 25px;
+        font-family: arial;
 
-<div class="subject list">
-  <h2>List services</h2>
-  
+    }
+    th{
+        font-size: 25px;
+        font-family: arial;
+        font-weight: bold;
 
- 
+    }
+    input{
+        font-size: 24px;
+        font-family: arial;
 
+    }
+    img.icon{
+        height: 40px;
+        width: 40px;
+    }
+</style>
 
-  <table>
-    
-    <% @service.each do |service| %>
+<div style="margin-top: 10px;">
+  <table class="display" id='articles' width="100%">
+    <thead>
     <tr>
-      <td><%= service.name %></td>
-      <td class="actions">
-        <%= link_to("Rename", {:action => 'editservice',  :id => service.id}, :class => 'action edit') %>
-        <%= link_to("Delete", {:action => 'delservice', :id => service.id},  :class => 'action delete') %>
-      </td>
+      <th style="text-align: left">Service Name</th>
+      
+      <th >&nbsp;</th>
+      <th >&nbsp;</th>
+
     </tr>
+    </thead>
+    <tbody>
+    <% @service.each do |service| %>
+        <tr class='<%= cycle("even gradeC", "odd gradeX") %>'>
+
+          <td><%= service.name %></td>
+          
+          <td style="text-align: center;">
+            <img onClick="delete_service('<%= service.id %>')" class="icon" src="/images/close.png" alt="view">
+          </td>
+          <td style="text-align: center;">
+            <img onmousedown="window.location='/settings/edit_service?service=<%= service.name %> 
+		class="icon" src="/images/pencil.png" alt="view">
+          </td>
+        </tr>
     <% end %>
-
- <tr>
-
-    <td>
-	<br><br><%= link_to("Add New Service", {:action => 'addservice'}, :class => 'action new') %>
-   </td>
-</tr>
-
+    </tbody>
   </table>
 </div>
+
+<script type="text/javascript">
+    function delete_service(id)
+    {
+        jConfirm("Are you sure you want to delete this service? ","Confirmation Dialog",function(r)
+        {
+            if (r)
+            {
+                jQuery.ajax({
+                    url:  "/settings/delete_service?id=" + id ,
+                    type:"POST",
+                    success: function(msg){
+                        jAlert(msg, "Site Deletion Outcome")
+                        window.location='list_sites'
+                    },
+                    error: function(){
+                        jAlert("Could not delete site", "Unsuccessful!");
+                    }
+
+                });
+            }
+        })
+    }
+</script>

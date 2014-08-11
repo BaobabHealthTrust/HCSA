@@ -1,12 +1,125 @@
+<!DOCTYPE html>
+
+
 <html>
+	<head>
+ 		 <title>HCSA</title>
 
-	 <%= link_to("Home", {:controller => 'admin', :action => 'index'}, :class => 'back-link') %>
-	 <%= link_to("Reports", {:controller => 'report', :action =>'reportMenu'}, :class => 'action 1')%>
-       	 <%= link_to("Settings", {:controller => 'settings', :action =>'settingsMenu'}, :class => 'action 3')%>
-         <%= link_to("Logout", { :controller => 'votes',:action =>'index' }, :class => 'action 4')%>
+	<script language="javascript" type="text/javascript" src="/javascripts/jquery.ui.draggable.js"></script>
+  <script language="javascript" type="text/javascript" src="/javascripts/jquery.alerts.js"></script>
+  <script language="javascript" type="text/javascript" src="/javascripts/application.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/application.css" />
+  <link href="/stylesheets/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+		<style type="text/css">
+
+      html, body {
+          margin:0;
+          padding:0;
+          height:100%
+	  width:100%
+	  background: #eaeaea;
+	
+	 
+      }
+      h1, p { margin:0 0 1em }
+      #header {
+          position:fixed;
+          left:0;
+          top:0;
+          background: #197994;
+          height:70px;
+	  width:100%;
 
 
-<%= yield %>
+      }
+      #footer {
+          bottom:0;
+          top:auto;
+          position:fixed;
+          width:100%;
+          left:0;
+          background: #eaeaea;
+          height:0px;
+
+            }
+
+     
+
+
+      td.icon{
+
+          color: #92CD00;
+          font-size: 23px;
+          width: 1px;
+          font-family: arial;
+          cursor: pointer;
+          text-align: center;
+      }
+div.header{
+    background: #15191C;
+
+}
+
+td.link{
+
+    color: #92CD00;
+    font-size: 23px;
+    font-weight: bold;
+    height: 30px;
+    width: 180px;
+    font-family: arial;
+    cursor: pointer;
+    border-width: 0px 0px 0px 0px;
+    border-style: solid;
+    border-color: #f5f5f5;
+    text-align: center;
+}
+.link:hover{
+    background-color: silver;
+    color: #000000;
+}
+      
+  </style>
+
+
+	</head>
+
+	<body >
+
+	<div class="heading">
+
+	<table class="menu" cellspacing="0px">
+	    <tr>
+	      <td style="width: 60px;"><img src="/images/ballot.jpg" style="float: left;margin-top: 5px;margin-left: 5px;height:60px;"></td>
+	      <td style="text-align: left;vertical-align: text-top;">
+		<span style="font-size: 35px;color: #C0C0C0;font-family:arial;">
+		    HCSA DASHBOARD
+		</span>
+	      </td>
+
+	      <td class="link" onmousedown="window.location='/admin/index'">Home</td>
+	      <td class="link" onmousedown="window.location= '/report/reportMenu'">Report</td>
+	      
+		<td class="link" onmousedown="window.location='/settings/settingsMenu'" >Administration</td>
+	      
+	      <td class="link" onmousedown="window.location= '/votes/index'">Logout</td>
+	    </tr>
+	  </table>
+
+	</div>
+	
+	
+	<div class="content">
+		<p><%= yield %></p>
+	</div>
+	
+	<div class="footer">
+		
+	</div>
+
+	</body>
+</html>
+
 
 
 </html>

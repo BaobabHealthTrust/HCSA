@@ -90,7 +90,7 @@
             highlight('password_lbl',true);
         }
         else
-        {
+        {<%=raise params.to_yaml%>
             jQuery.ajax({
                 url:  "/user/save?password=" + password + "&username=" + username +"&role=" +role,
                 type:"POST",
