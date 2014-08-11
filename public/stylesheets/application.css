@@ -24,13 +24,13 @@ h1, p { margin:0 0 1em }
     position:fixed;
     left:0;
     top:0;
-    background: #15191C;
+    background: #2E6889;
     height:100px;
     min-width: 1048px;
     width: 100%;
 }
 div.heading{
-    background: #15191C;
+    background: #2E6889;
 
 }
 div.footer {
@@ -38,7 +38,7 @@ div.footer {
     top:auto;
     position:fixed;
     left:0;
-    background:#15191C;
+    background:#2E6889;
     height:50px;
     min-width: 1048px;
     width: 100%;

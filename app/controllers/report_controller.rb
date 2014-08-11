@@ -6,11 +6,29 @@ class ReportController < ApplicationController
 		 @service =Service.all.delete_if{|service|service.name.blank?}
 	end
 
-	def specify_dates
+	def specify_details
 		 @service =Service.all.delete_if{|service|service.name.blank?}
 	end
+	
+       def process_report
+		#rails params.to_yaml
+	    start_date = params[:start_date].to_date.strftime("%Y-%m-%d")
+	    end_date = params[:end_date].to_date.strftime("%Y-%m-%d")
 
-	def make_general_report	
+	    case params[:report_type]
+	    when "General report"
+	      redirect_to :action => 'general_report', :start_date => start_date, :end_date => end_date
+	    when "Departmental report"
+	      service = params[:service]
+	      redirect_to :action => 'service_report', :service => service, :start_date => start_date, :end_date => end_date
+	   end 
+       end
+
+
+
+	
+
+	def general_report	
 		@service_selected = params[:service]	
 		@start_date = params[:start_date].to_date.strftime("%Y-%m-%d")
 	 	@end_date = params[:end_date].to_date.strftime("%Y-%m-%d")
@@ -80,7 +98,7 @@ class ReportController < ApplicationController
 	   render :layout => 'report_layout'		
 	end
 
-	def make_deptReport		
+	def service_report		
 		@service_selected = params[:service]	
 		@start_date = params[:start_date].to_date.strftime("%Y-%m-%d")
 	 	@end_date = params[:end_date].to_date.strftime("%Y-%m-%d")

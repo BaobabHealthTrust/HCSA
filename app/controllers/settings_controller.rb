@@ -69,8 +69,11 @@ class SettingsController < ApplicationController
 	end
 
 
-	def delservice
- 	@service = Service.find(params[:id]) 
+	def delete_service
+		rails params.to_yaml
+		Service.find(params[:id]).destroy 
+		flash[:notice] = "service deleted." 
+		redirect_to(:action => 'listservice') 
 	end 
 
 	def destroyService 
