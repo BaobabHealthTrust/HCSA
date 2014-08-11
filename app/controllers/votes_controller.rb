@@ -2,8 +2,6 @@ class VotesController < ApplicationController
 	
 	def index
 		render :layout => 'barcode'
-		
-
 	end
 
 	def authenticate
@@ -34,21 +32,22 @@ class VotesController < ApplicationController
 		#raise $hash.to_yaml
 	   services =Service.all
 	   @row_1 = services[0..2] || Hash.new
-	  	@row_2 = services[3..5] || Hash.new
-	  	@row_3 = services[6..8] || Hash.new
+	   @row_2 = services[3..5] || Hash.new
+	   @row_3 = services[6..8] || Hash.new
 	  	
 
 	  	@rows = [@row_1, @row_2, @row_3]
 
 		if Service.count > 8
   		@nav = "MORE SERVICES "
+		@page = 'more'
 	else
 		@nav = ""
   	end
   end
 
   def more
-  	@nav = "<< MORE SERVICES"
+  	@nav = "<< PREVIOUS PAGE"
   	@page = "serviceselect"
 
   	services = Service.all
@@ -73,12 +72,14 @@ class VotesController < ApplicationController
 
 		sat = Satlevel.all.delete_if{|sat|sat.name.blank?}
 		
-		@row_1 = sat[0..1] || Hash.new
-	  	@row_2 = sat[2..2] || Hash.new
-	  	@row_3 = sat[3..4] || Hash.new
+		@row_1 = sat[0..0] || Hash.new
+	  	@row_2 = sat[1..1] || Hash.new
+	  	@row_3 = sat[2..2] || Hash.new
+		@row_4 = sat[3..3] || Hash.new
+		@row_5 = sat[4..4] || Hash.new
 	  	
 
-	  	@rows = [@row_1, @row_2, @row_3]
+	  	@rows = [@row_1, @row_2, @row_3, @row_4, @row_5]
 		
 	 end
 	
@@ -89,6 +90,8 @@ class VotesController < ApplicationController
 		client_id = params[:client_id]
 		selected_service = params[:service_sel]
 		satlevel=Satlevel.find_by_satlevel_id(params[:id]).name
+
+		
 		#raise satlevel.to_yaml
 		
 		if (satlevel== "FULLY SATISFIED" || satlevel== "SATISFIED")
@@ -109,6 +112,18 @@ class VotesController < ApplicationController
 		
 	    	@service = params[:service_choice]
       		@concerns = Concern.all
+
+		concern = Concern.all		
+
+		@row_1 = concern[0..2] || Hash.new
+	        @row_2 = concern[3..5] || Hash.new
+		@row_3 = concern[6..8] || Hash.new
+		  	
+
+	  	@rows = [@row_1, @row_2, @row_3]
+			
+		
+		
 		
 	end
 	

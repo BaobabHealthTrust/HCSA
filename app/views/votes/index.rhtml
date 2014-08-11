@@ -1,4 +1,7 @@
-  <% if !flash[:notice].blank? %>
+
+
+
+<% if !flash[:notice].blank? %>
 	<script>
 		alert('<%= "#{flash[:notice]}" %>');
 	</script>
@@ -9,3 +12,5 @@
           <%= text_field_tag :barcode, '', {:id => 'barcode', :class => 'touchscreenTextInput', :style => 					'position:absolute' } %>
           <%= submit_tag "Submit", :style => "display:none" %>
 </form>
+
+
