@@ -25,10 +25,10 @@
 
 		.button1
 		{ border-radius: 25px;
-          	 	background-color: #808080; 
+          	 	background-color: #B55C5A; 
 			padding-left: 30px;
 			padding-right: 30px;  
-          		width: 450px; 
+          		width: 350px; 
 			height: 90px;
 			font-size: 25px;
 			color: #eaeaea;
@@ -36,6 +36,7 @@
 			text-align:center;
 			line-height: 3.00;
 			font-family:arial;
+			 
 			
                }	
 	
@@ -72,41 +73,29 @@
 	<% @rows.each do |row| %>
 	<tr>
 	     <% row.each do |service| %>
-
-		
+	
 	<td><%=link_to service.name.upcase, {:controller => "votes", :action => "checksat", :id => service.id }, :class => "button" %></td>
 		<%end%>
 		<%= hidden_field_tag("service_id", params[:service_id])%>
 		<input type="hidden">
-
 	
 	</tr>
 	<% end %>
 	
-
- 
-
 </table><br><br>
-
-	<div  style= "color:white;">
-
-	<% if Service.count > 8 %>
-	 <%= link_to @nav, @page, :class => "button1" %>
-
-		<% end %>	
-	</div>
-		
-	
-		
 
 </form>
 
+	<div >
+	<% if Service.count > 8 %>
+	 <%= link_to @nav, @page, :class =>  "button1" %>
+		<% end %>
+	</div>
 
-<center>
-	
+</center>
+		
 	</body>
-
-         	 
+	 
 	     </form>
 	 
 	 </body>

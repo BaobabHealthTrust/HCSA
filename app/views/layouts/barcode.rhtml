@@ -10,18 +10,15 @@
     <%= javascript_include_tag "barcode" %>
     
     <style type="text/css">
-	html{
+	
+	body{
 		background-image: url(../images/welcome.jpg);
-		background-size: 1400px 800px;
 		background-repeat:no-repeat;
-		
-		
+		background-size: 100% 1900%;
 		
 
-		
+          	
 		}
-	 
-	
       #barcode {
         background:transparent none repeat scroll 0 0;
         border-color:-moz-use-text-color -moz-use-text-color silver;
@@ -29,9 +26,10 @@
         border-width:medium medium 1px;
         font-family:"Nimbus Sans L","Arial Narrow",sans-serif;
         font-size:2.2em;
-        padding-left:5px;
-        width:300px; 
-	padding-top: 39%;     
+        width:400px;
+	position: relative;
+	top: 68%;
+	left:66%;      
       }
       #header div {
         font-weight:normal;
@@ -79,31 +77,14 @@
 
 		<div class="header-action">
 
-
-			<a class="button" href="/user/login">Admin login</a>
+			<a class="button " href="/admin/index">Admin login</a>
 
 					</div>
- 
 		
-
-
-			<div style="float:left;font-size:1px;font-style: normal;padding-top:41.4%;padding-left:66%;color:white;">
-				Scan your barcode:	
-			</div>
- 
-
-		<center>   
-			<h1>WELCOME TO <br/><br/><%= image_tag("vote.jpg")%><br/><br/>KAMUZU CENTRAL HOSPITAL</h1>
-					<h2>CLIENT SATISFACTION VOTING SYSTEM</h2>
-		</center><br/><br/><br/>
-
-
-			<h2>
-					<div style="float:left;font-size:40px;font-style: normal;font-weight: bold;">Scan your barcode:	
+					<div style="float:left;font-size:40px;font-style: normal;font-weight: bold;">	
 					</div>
- 
 				 <%= yield %>
-			
+			</h2>
 
    			 </div>
 		  </div>

@@ -39,8 +39,9 @@ class VotesController < ApplicationController
 	  	@rows = [@row_1, @row_2, @row_3]
 
 		if Service.count > 8
-  		@nav = "MORE SERVICES "
+  		@nav = "MORE SERVICES >>>"
 		@page = 'more'
+		@nav2= ""
 	else
 		@nav = ""
   	end
@@ -48,6 +49,7 @@ class VotesController < ApplicationController
 
   def more
   	@nav = "<< PREVIOUS PAGE"
+	@nav2="more services"
   	@page = "serviceselect"
 
   	services = Service.all
@@ -59,6 +61,30 @@ class VotesController < ApplicationController
   	@rows = [@row_1, @row_2, @row_3]
 	
   	@services = services[9..17]
+  	render('serviceselect')
+
+	
+	if Service.count > 17
+  		@nav2 = "MORE SERVICES>>"
+		@page = 'more2'
+	else
+		@nav2 = ""
+  	end
+  end
+
+def more2
+  	@nav2 = "<< PREVIOUS PAGE"
+  	@page = "serviceselect"
+
+  	services = Service.all
+  	@row_1 = services[18..20] || Hash.new
+  	@row_2 = services[21..23] || Hash.new
+  	@row_3 = services[24..26] || Hash.new
+  	
+
+  	@rows = [@row_1, @row_2, @row_3]
+	
+  	@services = services[18..26]
   	render('serviceselect')
   end
 
@@ -118,14 +144,13 @@ class VotesController < ApplicationController
 		@row_1 = concern[0..2] || Hash.new
 	        @row_2 = concern[3..5] || Hash.new
 		@row_3 = concern[6..8] || Hash.new
+		@row_4 = concern[9..11] || Hash.new
 		  	
 
-	  	@rows = [@row_1, @row_2, @row_3]
+	  	@rows = [@row_1, @row_2, @row_3, @row_4]
 			
-		
-		
-		
-	end
+
+		end
 	
 	
 	def save_vote

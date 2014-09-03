@@ -1,4 +1,4 @@
-<html>
+ <html>
     <head>
 	<title>concerns</title>	
 
@@ -9,21 +9,22 @@
 				  }
 
 						input[type=checkbox].css-checkbox + label.css-label {
-							padding-left:35px;
-							height:30px; 
+							padding-left:25px;
+							height:39px; 
 							display:inline-block;
 							line-height:30px;
 							background-repeat:no-repeat;
 							background-position: 0 0;
 							color:  #197994; 
-							font-size:30px;
+							font-size:27px;
 							vertical-align:middle;
 							cursor:pointer;
 
 						}
 
 						input[type=checkbox].css-checkbox:checked + label.css-label {
-							background-position: 0 -30px;
+							background-position: 0 -38.5px;
+
 						}
 						label.css-label {
 				background-image:url(../images/csscheckbox_463563ae6decfc874d90385dd7ff6b45.png);
@@ -36,6 +37,13 @@
 			}		
 
 		label {margin-right:20px;}
+
+	table {
+	 	width: 100%;
+		padding-left: 3%;
+		padding-right: 3%;
+				
+	}
 
 	</style>
   
@@ -54,29 +62,33 @@
           	  		    
            	   </div>
 	</center>
-
-	<br><br><br>
-
-	   
-
- 
-	 
-
-	 <div style="padding-left: 450px;padding-top: 10px; background-colour:white;">
+	
 	<form action = "/votes/save_vote " method = "post" >
 	
-		<%@concerns.each do |t|%>
-		
-		<input type="checkbox" id= "<%= t.name %>" name= ""  class="css-checkbox" />   		
-		<label for="<%= t.name %>"  class="css-label">&nbsp;&nbsp;<%= t.name %></label> <br><br>
-		 <% end %>
+<table style cellpadding="20">
+	<% @rows.each do |row| %>
+	<tr>	     <% row.each do |t| %>
 
+		<td><input type="checkbox" id= "<%= t.name %>" name= ""  class="css-checkbox" />   		
+		<label for="<%= t.name %>"  class="css-label">&nbsp;&nbsp;&nbsp;<%= t.name %></td></label>
+		  <% end %>
 		
 		<%= hidden_field_tag("client_id", params[:client_id])%>
 		<%= hidden_field_tag("service_choice", params[:service_choice])%>
 		<%= hidden_field_tag("response", params[:response])%>
+
+		</tr>
+		<% end %>
          
 		<br>
+
+	</table>
+
+	
+	</div>
+
+	<center>
+	<div style = "position:relative; top:520px;" >
 	<input style="border-radius: 10px;
           	 	background-color: #197994; 
 			padding-left: 30px;
@@ -89,12 +101,11 @@
 			text-align:center;
 			line-height: 3.00;
 			font-family:arial;"  
-		type="submit" value="Submit"/>      
-	
+		type="submit" value="Submit"/>
 	</form>
-	</div>
+	</div>     
 
-
+	</center>
 
     </body>
 

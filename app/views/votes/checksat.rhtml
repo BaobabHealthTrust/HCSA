@@ -5,7 +5,7 @@
 
 	
 	<style type="text/css">
-	.button
+	.button1
 		{ border-radius: 70px;
           	 	background-color: #197994; 
 			padding-left: 30px;
@@ -13,7 +13,69 @@
           		width: 300px; 
 			height: 75px;
 			font-size: 25px;
-			color: #eaeaea;
+			color: white;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;
+			
+               }
+
+	.button2
+		{ border-radius: 70px;
+          	 	background-color: #278EAA; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 300px; 
+			height: 75px;
+			font-size: 25px;
+			color: white;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;
+			
+               }
+
+       .button3
+		{ border-radius: 70px;
+          	 	background-color:#46B1CE; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 300px; 
+			height: 75px;
+			font-size: 25px;
+			color: white;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;
+			
+               }
+	.button4
+		{ border-radius: 70px;
+          	 	background-color: #278EAA; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 300px; 
+			height: 75px;
+			font-size: 25px;
+			color: white;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;
+			
+               }
+       .button5
+		{ border-radius: 70px;
+          	 	background-color: #197994 ; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 300px; 
+			height: 75px;
+			font-size: 25px;
+			color: white;
 			text-decoration: none;
 			text-align:center;
 			line-height: 3.00;
@@ -34,7 +96,7 @@
 	
 	<body>
 		<div id="header">
-	 	   <div style="font-size: 32px;color: #eaeaea;font-family:arial;margin-top:1.5%;">
+	 	   <div style="font-size: 32px;color: white;font-family:arial;margin-top:1.5%;">
            		 <center>ARE YOU SATISFIED WITH THE SERVICE YOU HAVE RECEIVED IN <br> <%=$service_selected.upcase%>?</center>
           	   </div>
   		    <!--<img src="/images/vote.jpg" style="float: left;margin-top: 5px;margin-left: 5px;height: 80px;">
@@ -49,11 +111,30 @@
 	<% @rows.each do |row| %>
 	<tr>
 	     <% row.each do |satlevel| %>
+	
+      <td>
+	<% if satlevel.id == 1 %>
+	<%=link_to satlevel.name.upcase, {:controller => "votes", :action => "assesslevel", :id => satlevel.id },:class => "button1" %>
+	   <%end%>
 
-		
-		<td><%=link_to satlevel.name.upcase, {:controller => "votes", :action => "assesslevel", :id => satlevel.id }, :class => "button" %></td>
-		<%end%>
+	<% if satlevel.id == 2 %>
+	<%=link_to satlevel.name.upcase, {:controller => "votes", :action => "assesslevel", :id => satlevel.id },:class => "button2" %>
+	   <%end%>
 
+	<% if satlevel.id == 3 %>
+	<%=link_to satlevel.name.upcase, {:controller => "votes", :action => "assesslevel", :id => satlevel.id },:class => "button3" %>
+	   <%end%>
+
+	<% if satlevel.id == 4 %>
+	<%=link_to satlevel.name.upcase, {:controller => "votes", :action => "assesslevel", :id => satlevel.id },:class => "button4" %>
+	   <%end%>
+
+	<% if satlevel.id == 5 %>
+	<%=link_to satlevel.name.upcase, {:controller => "votes", :action => "assesslevel", :id => satlevel.id },:class => "button5" %>
+	   <%end%>
+	
+	</td>
+	      <%end%>
 		
 		<!--<%= hidden_field_tag("client_id", @hash_id)%>
 		<%= hidden_field_tag("service_sel", @service_selected)%>-->		

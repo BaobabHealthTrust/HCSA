@@ -6,7 +6,7 @@
 	<style type="text/css">
 	
 	input
-		 { border-radius: 11px;
+	    { border-radius: 11px;
 			border-color: #197994;
 			border-width: 3px;
 			border-style: solid;
@@ -19,6 +19,24 @@
 			
                }
 
+	button
+		{ border-radius: 10px;
+          	 	background-color: #197994; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 120px; 
+			height: 110px;
+			font-size: 25px;
+			color: #eaeaea;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;
+			
+               }
+
+	
+
 </style>
 	
 	
@@ -30,7 +48,7 @@
      <body>
 	
 	<div id="header">
-	 	   <div style="font-size: 32px;color: #eaeaea;font-family:arial;margin-top:2.1%;">
+	 	   <div style="font-size: 32px;color: white;font-family:arial;margin-top:2.1%;">
            		 <center>WRITE YOUR COMMENT OR RECOMMENDATIONS</center>
           	   </div>
 	   	    </div>
@@ -38,14 +56,15 @@
 	 
 	<form action = "/votes/save_comment " method = "post" >
 		
-		<br><br><br><br><br><br><br><br>
+		<br><br><br><br>
 		<center>
 		<p>
-		<input type="text" name="COMMENT" value=""><br><br><br>
+		<input style="height:100px;font-size:14pt;" type="text" name="COMMENT" value=""> 
+		 <button style="button" type="submit">SUBMIT</button>
 		</p>
 		<!--<button type="submit" value="FINISH"/>!-->
 		
-	        
+	       
 		</center>
 	  
 	    
