@@ -1,3 +1,64 @@
+<script type="text/javascript">
+    
+    function verify_form()
+    {
+	
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var password2 = document.getElementById('repassword').value;
+        var role = document.getElementById("user_role").value;
+	
+        if (username.trim() == "")
+        {
+		 JAlert("role");
+            jAlert("Username cannot be blank", "Incomplete Information");
+            highlight('username_lbl',true);
+	  
+        }
+        else if (password.trim() == "")
+        {
+            jAlert("A password cannot be blank", "Incomplete Information");
+            highlight('password_lbl',true);
+        }
+        else if (password2.trim() == "")
+        {
+            jAlert("Re enter password for confirmation", "Incomplete Information");
+            highlight('repassword_lbl',true);
+        }
+        else if (password != password2)
+        {
+            jAlert("Passwords provided do not match", "Incomplete Information");
+            highlight('repassword_lbl',true);
+            highlight('password_lbl',true);
+        }
+        else 
+        {
+            jQuery.ajax({
+                url:  "/user/save?password=" + password + "&username=" + username +"&role=" +role,
+                type:"POST",
+                success: function(msg){
+                    jAlert(msg, "User Creation Outcome")
+                    clear()
+                },
+                error: function(){
+                    jAlert("Could not create user", "Unsuccessful!");
+                }
+
+            });
+        }
+
+
+    }
+
+    function clear()
+    {
+        document.getElementById('username').value = "";
+        document.getElementById('password').value = "";
+        document.getElementById('repassword').value = "";
+
+    }
+    
+</script>
 
 <style type="text/css">
     input{
@@ -57,64 +118,4 @@
   </table>
 
 </div>
-
-<script type="text/javascript">
-    <!--
-    function verify_form()
-    {
-
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-        var password2 = document.getElementById('repassword').value;
-        var role = document.getElementById("user_role").value;
-
-        if (username.trim() == "")
-        {
-            jAlert("Username cannot be blank", "Incomplete Information");
-            highlight('username_lbl',true);
-        }
-        else if (password.trim() == "")
-        {
-            jAlert("A password cannot be blank", "Incomplete Information");
-            highlight('password_lbl',true);
-        }
-        else if (password2.trim() == "")
-        {
-            jAlert("Re enter password for confirmation", "Incomplete Information");
-            highlight('repassword_lbl',true);
-        }
-        else if (password != password2)
-        {
-            jAlert("Passwords provided do not match", "Incomplete Information");
-            highlight('repassword_lbl',true);
-            highlight('password_lbl',true);
-        }
-        else
-        {<%=raise params.to_yaml%>
-            jQuery.ajax({
-                url:  "/user/save?password=" + password + "&username=" + username +"&role=" +role,
-                type:"POST",
-                success: function(msg){
-                    jAlert(msg, "User Creation Outcome")
-                    clear()
-                },
-                error: function(){
-                    jAlert("Could not create user", "Unsuccessful!");
-                }
-
-            });
-        }
-
-
-    }
-
-    function clear()
-    {
-        document.getElementById('username').value = "";
-        document.getElementById('password').value = "";
-        document.getElementById('repassword').value = "";
-
-    }
-    //-->
-</script>
 

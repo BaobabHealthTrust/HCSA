@@ -52,19 +52,17 @@
           <td><%= service.name %></td>
           
           <td style="text-align: center;">
-            <img onClick="delete_service('<%= service.id %>')" class="icon" src="/images/close.png" alt="view">
+             <%= link_to("Rename", {:action => 'editservice',  :id => service.id}) %>
           </td>
           <td style="text-align: center;">
-            <img onmousedown="window.location='/settings/edit_service?service=<%= service.name %> 
-		class="icon" src="/images/pencil.png" alt="view">
-          </td>
+            <%= link_to("Delete", {:action => 'delservice', :id => service.id}) %>
         </tr>
     <% end %>
     </tbody>
+	<tr><%= link_to("Add New Service", {:action => 'addservice'}, :class => 'action new')%> </tr>
   </table>
 </div>
-
-<script type="text/javascript">
+<!--<script type="text/javascript">
     function delete_service(id)
     {
         jConfirm("Are you sure you want to delete this service? ","Confirmation Dialog",function(r)
@@ -86,4 +84,4 @@
             }
         })
     }
-</script>
+</script>-->

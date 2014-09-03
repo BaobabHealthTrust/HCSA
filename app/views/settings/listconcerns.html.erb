@@ -1,33 +1,136 @@
-<h1>CONCERNS ADMIN PAGE </h1>
 
-	 
+<link rel="stylesheet" type="text/css" href="/stylesheets/demo_table.css" />
+<script type="text/javascript" language="javascript" src="/javascripts/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="/javascripts/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('#articles').dataTable({
+            "aaSorting": [[ 2, "desc" ]],
+            'iDisplayLength': 10,
+            "bLengthChange": false
+        });
+    } );
+</script>
 
-<div class="subject list">
-  <h2>Concerns</h2>
-  
+<style type="text/css">
+    div{
+        font-size: 25px;
+        font-family: arial;
 
+    }
+    th{
+        font-size: 25px;
+        font-family: arial;
+        font-weight: bold;
 
-  <table>
-    
-    <% @concerns.each do |concerns| %>
+    }
+    input{
+        font-size: 24px;
+        font-family: arial;
+
+    }
+    img.icon{
+        height: 40px;
+        width: 40px;
+	}
+
+        .button-success,
+        .button-error,
+        .button-warning,
+        .button-secondary {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-success {
+            background-color:#a6a6f2; /* this is a green */
+		padding:5px;
+  		 border: none;
+  	         color:#000;
+  	         text-decoration:none;
+        }
+
+        .button-error {
+            background: rgb(202, 60, 60); /* this is a maroon */
+		padding:5px;
+  		 border: 1px solid #666;
+  	         color:#000;
+  	         text-decoration:none;
+        }
+
+        .button-warning {
+            background: rgb(223, 117, 20); /* this is an orange */
+		padding:5px;
+  		 border: 1px solid #666;
+  	         color:#000;
+  	         text-decoration:none;
+        }
+
+        .button-secondary {
+                 background: rgb(66, 184, 221); /* this is a light blue */
+		 padding:5px;
+  		 border: 1px solid #666;
+		 border-radius: 25px;
+  	         color:#000;
+  	         text-decoration:none;
+        }
+
+   
+</style>
+
+<div style="margin-top: 10px;">
+ <%= button_to "Add New concern", { action: 'addconcerns'}, :class => 'button-secondary'%>
+ <table class="display" id='articles' width="100%">
+    <thead>
     <tr>
-      <td><%= concerns.name %></td>
-      <td class="actions">
+      <th style="text-align: left">Concerns Settings</th>
+      
+      <th >&nbsp;</th>
+      <th >&nbsp;</th>
 
-        <%= link_to("Rename", {:action => 'editconcern', :id => concerns.id }, :class => 'action edit') %>
-
-        <%= link_to("Delete", {:action => 'delconcern', :id => concerns.id}, :class => 'action delete') %>
-      </td>
     </tr>
+    </thead>
+    <tbody>
+    <% @concerns.each do |concerns| %>
+        <tr class='<%= cycle("even gradeC", "odd gradeX") %>'>
+
+          <td><%= concerns.name %></td>
+          
+          <td style="text-align: center;">
+             <!--<%= link_to("Rename", {:action => 'editconcern', :id => concerns.id }) %>-->
+	    <%= button_to "RENAME", { action: 'editconcern', :id => concerns.id }, :class => 'button-success'%> 
+          </td>
+          <td style="text-align: center;">
+            <!--<%= link_to("Delete", {:action => 'delconcern', :id => concerns.id}, :class => 'action delete') %>-->
+	    <%= button_to "DELETE", { action: 'delconcern', :id => concerns.id }, :class => 'button-error'%> 
+        </tr>
     <% end %>
-
-
-<tr>
-
-    <td>
-	<br><br><%= link_to("Add New concern", {:action => 'addconcerns'}, :class => 'action new') %>
-   </td>
-</tr>
-
+    </tbody>
+	
   </table>
+
 </div>
+<!--<script type="text/javascript">
+    function delete_service(id)
+    {
+        jConfirm("Are you sure you want to delete this service? ","Confirmation Dialog",function(r)
+        {lass
+            if (r)
+            {
+                jQuery.ajax({
+                    url:  "/settings/delete_service?id=" + id ,
+                    type:"POST",
+                    success: function(msg){
+                        jAlert(msg, "Site Deletion Outcome")
+                        window.location='list_sites'
+                    },
+                    error: function(){
+                        jAlert("Could not delete site", "Unsuccessful!");
+                    }
+
+                });
+            }
+        })
+    }
+</script>-->
