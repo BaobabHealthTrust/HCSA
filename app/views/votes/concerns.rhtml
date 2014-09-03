@@ -1,8 +1,51 @@
-<html>
+ <html>
     <head>
 	<title>concerns</title>	
-	
-	
+
+
+	<style style="text/css">
+	input[type=checkbox].css-checkbox {
+							display:none;
+				  }
+
+						input[type=checkbox].css-checkbox + label.css-label {
+							padding-left:25px;
+							height:39px; 
+							display:inline-block;
+							line-height:30px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							color:  #197994; 
+							font-size:27px;
+							vertical-align:middle;
+							cursor:pointer;
+
+						}
+
+						input[type=checkbox].css-checkbox:checked + label.css-label {
+							background-position: 0 -38.5px;
+
+						}
+						label.css-label {
+				background-image:url(../images/csscheckbox_463563ae6decfc874d90385dd7ff6b45.png);
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;							
+			}		
+
+		label {margin-right:20px;}
+
+	table {
+	 	width: 100%;
+		padding-left: 3%;
+		padding-right: 3%;
+				
+	}
+
+	</style>
   
 
     </head>
@@ -13,38 +56,57 @@
 
 	<center>
 	
-
 	<div id="header">
-	 	 <div style="font-size: 32px;color: #eaeaea;font-family:arial;margin-top:2.1%;">
+	 	 <div style="font-size: 32px;color: white;font-family:arial;margin-top:2.1%;">
            		 CHOOSE THE PROBLEMS YOU HAD IN <%=$service_selected.upcase %>
           	  		    
            	   </div>
 	</center>
-
-	<br><br><br>
-
-	   
-
-
-	 
-	  <form action = "/votes/save_vote " method = "post" >
 	
-		<%@concerns.each do |t|%>
+	<form action = "/votes/save_vote " method = "post" >
 	
-		<li>
-		    <%= check_box_tag("concerns[]", t.name)%>
-		    <%= t.name %>
-		</li>
-	        <% end %>
-			<!--values in transit-->
-			<%= hidden_field_tag("client_id", params[:client_id])%>
-			<%= hidden_field_tag("service_choice", params[:service_choice])%>
-			<%= hidden_field_tag("response", params[:response])%>
-         
+<table style cellpadding="20">
+	<% @rows.each do |row| %>
+	<tr>	     <% row.each do |t| %>
+
+		<td><input type="checkbox" id= "<%= t.name %>" name= ""  class="css-checkbox" />   		
+		<label for="<%= t.name %>"  class="css-label">&nbsp;&nbsp;&nbsp;<%= t.name %></td></label>
+		  <% end %>
 		
-		<input type="submit" value="Submit"/>      
+		<%= hidden_field_tag("client_id", params[:client_id])%>
+		<%= hidden_field_tag("service_choice", params[:service_choice])%>
+		<%= hidden_field_tag("response", params[:response])%>
+
+		</tr>
+		<% end %>
+         
+		<br>
+
+	</table>
+
 	
-	    </form>
+	</div>
+
+	<center>
+	<div style = "position:relative; top:520px;" >
+	<input style="border-radius: 10px;
+          	 	background-color: #197994; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 200px; 
+			height: 60px;
+			font-size: 38px;
+			color: #eaeaea;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;"  
+		type="submit" value="Submit"/>
+	</form>
+	</div>     
+
+	</center>
+
     </body>
 
 
