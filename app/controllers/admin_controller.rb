@@ -5,9 +5,7 @@ class AdminController < ApplicationController
 	 	
 		@service_selected = params[:service]	
 		@start_date =  Date.today
-	 	@end_date = Time.now
-		
-
+	 	@end_date = Date.today
 		 
 		@result = Satlevel.joins(:votes)
 		@result2 = @result.find_by_sql("select name, count(*) as 'total_votes'
