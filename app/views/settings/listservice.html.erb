@@ -32,9 +32,52 @@
         height: 40px;
         width: 40px;
     }
+
+	 .button-success,
+        .button-error,
+        .button-warning,
+        .button-secondary {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-success {
+            background-color:#a6a6f2; /* this is a green */
+		padding:5px;
+  		 border: none;
+  	         color:#000;
+  	         text-decoration:none;
+        }
+
+        .button-error {
+            background: rgb(202, 60, 60); /* this is a maroon */
+		padding:5px;
+  		 border: 1px solid #666;
+  	         color:#000;
+  	         text-decoration:none;
+        }
+
+        .button-warning {
+            background: rgb(223, 117, 20); /* this is an orange */
+		padding:5px;
+  		 border: 1px solid #666;
+  	         color:#000;
+  	         text-decoration:none;
+        }
+
+        .button-secondary {
+                 background: rgb(66, 184, 221); /* this is a light blue */
+		 padding:5px;
+  		 border: 1px solid #666;
+		 border-radius: 25px;
+  	         color:#000;
+  	         text-decoration:none;
+        }
 </style>
 
 <div style="margin-top: 10px;">
+	<%= button_to "Add New Service", { action: 'addservice'}, :class => 'button-secondary'%>
   <table class="display" id='articles' width="100%">
     <thead>
     <tr>
@@ -52,14 +95,16 @@
           <td><%= service.name %></td>
           
           <td style="text-align: center;">
-             <%= link_to("Rename", {:action => 'editservice',  :id => service.id}) %>
+             <!--<%= link_to("Rename", {:action => 'editservice',  :id => service.id}) %>-->
+	     <%= button_to "RENAME", { action: 'editservice', :id => service.id }, :class => 'button-success'%> 
           </td>
           <td style="text-align: center;">
-            <%= link_to("Delete", {:action => 'delservice', :id => service.id}) %>
+	    <%= button_to "DELETE", { action: 'delservice', :id => service.id }, :class => 'button-error'%> 
+           <!-- <%= link_to("Delete", {:action => 'delservice', :id => service.id}) %>-->
         </tr>
     <% end %>
     </tbody>
-	<tr><%= link_to("Add New Service", {:action => 'addservice'}, :class => 'action new')%> </tr>
+	
   </table>
 </div>
 <!--<script type="text/javascript">
