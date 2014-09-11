@@ -39,9 +39,9 @@
 		label {margin-right:20px;}
 
 	table {
-	 	width: 100%;
-		padding-left: 3%;
-		padding-right: 3%;
+	 	width: 107%;
+		padding-left: 2%;
+		padding-right: 2%;
 				
 	}
 
@@ -63,13 +63,14 @@
            	   </div>
 	</center>
 	
+
 	<form action = "/votes/save_vote " method = "post" >
 	
 <table style cellpadding="20">
 	<% @rows.each do |row| %>
 	<tr>	     <% row.each do |t| %>
 
-		<td><input type="checkbox" id= "<%= t.name %>" name= ""  class="css-checkbox" />   		
+		<td><input type="checkbox" name="concerns[]" id= "<%= t.name %>" value= "<%= t.name %>"  class="css-checkbox" />   		
 		<label for="<%= t.name %>"  class="css-label">&nbsp;&nbsp;&nbsp;<%= t.name %></td></label>
 		  <% end %>
 		
@@ -88,7 +89,7 @@
 	</div>
 
 	<center>
-	<div style = "position:relative; top:520px;" >
+	<div style = "position:relative; top:580px;" >
 	<input style="border-radius: 10px;
           	 	background-color: #197994; 
 			padding-left: 30px;
@@ -103,9 +104,7 @@
 			font-family:arial;"  
 		type="submit" value="Submit"/>
 	</form>
-	</div>     
 
-	</center>
 
     </body>
 
