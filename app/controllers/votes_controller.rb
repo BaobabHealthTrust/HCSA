@@ -72,21 +72,7 @@ class VotesController < ApplicationController
   	end
   end
 
-def more2
-  	@nav2 = "<< PREVIOUS PAGE"
-  	@page = "serviceselect"
-
-  	services = Service.all
-  	@row_1 = services[18..20] || Hash.new
-  	@row_2 = services[21..23] || Hash.new
-  	@row_3 = services[24..26] || Hash.new
-  	
-
-  	@rows = [@row_1, @row_2, @row_3]
-	
-  	@services = services[18..26]
-  	render('serviceselect')
-  end
+ 
 
 
 
@@ -145,9 +131,10 @@ def more2
 	        @row_2 = concern[3..5] || Hash.new
 		@row_3 = concern[6..8] || Hash.new
 		@row_4 = concern[9..11] || Hash.new
+		@row_5 = concern[12..14] || Hash.new
 		  	
 
-	  	@rows = [@row_1, @row_2, @row_3, @row_4]
+	  	@rows = [@row_1, @row_2, @row_3, @row_4, @row_5]
 			
 
 		end
@@ -189,7 +176,7 @@ def more2
 	end
 	
 	def save_comment
-		#raise $service_selected.to_yaml
+		#raise $service.to_yaml
 
 		serv = $service
 		if !(params[:comment].nil?) 
@@ -199,12 +186,15 @@ def more2
 			new_comment.comment =  params[:comment]	
 			new_comment.save
 			
-	 		redirect_to :controller=>"votes", :action=>"index"
+	 		redirect_to :controller=>"votes", :action=>"finish"
 	       	else
 			redirect_to :controller=>"votes", :action=>"index"
 
         	end
 	end
 	
+
+	def finish
+	end
 
 end

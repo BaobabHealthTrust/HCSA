@@ -1,0 +1,73 @@
+<html>
+<head>
+<title></title>
+<style style="text/css">
+
+	html{
+			background-color:#8CCEF2;
+	
+		}
+
+	#comment{
+			
+	
+		}
+
+
+	#submit{
+			border-radius: 10px;
+          	 	background-color: #197994; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 200px; 
+			height: 60px;
+			font-size: 38px;
+			color: #eaeaea;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;
+		} 
+
+
+</style>
+
+</head>
+<body>
+	<center>
+	<div id="comment"> 
+
+	<h2>Delete Comment</h2>
+
+	 <%= form_for(:concern, :url => {:action => 'destroyComment', :id => @comment.id}) do |f| -%>
+
+	<p>Are you sure you want to permanently delete this concern?</p> 
+
+	<p><%= @comment.comment %></p>
+
+		<input style="border-radius: 10px;
+          	 	background-color: red; 
+			padding-left: 30px;
+			padding-right: 30px;  
+          		width: 300px; 
+			height: 60px;
+			font-size: 38px;
+			color: #eaeaea;
+			text-decoration: none;
+			text-align:center;
+			line-height: 3.00;
+			font-family:arial;
+			color:white;"  
+		type="submit" value="Delete comment"/> 
+
+	 	<% end %> 
+	
+	<br><br>
+
+	<%= link_to("<< Return to List", {:action => 'comments'}, :class => 'back-link') %> 
+	
+	</div> 
+	</center>
+</body> 
+
+</html>

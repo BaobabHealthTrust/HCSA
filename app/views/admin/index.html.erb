@@ -1,21 +1,114 @@
-<html>
+ <html>
 <head>
-<title>
+	<title>HTML5 Bar Graph Example</title>
+	
+<%= javascript_include_tag "excanvas" %>
+<%= javascript_include_tag "html5-canvas-bar-graph" %>
 
-<title>
-
- <style type="text/css"
-	.content{
-		background-color:blue;
+<style type = "text/css">
+	html,body{
+		background-color:#8CCEF2;
+		position:relative;
 		}
-   
-  
+	
+	#graphDiv1{ margin-left: 2%;
+		   
+		    width: 55%;
+		    height: 10%;
+	
+		  }
+	
+	#table{ 
+		position: relative;
+		float: right;
+		bottom: -10px;
+		 margin-right: 2.5%;
+		border-collapse: collapse;
+		}
+
+	}
+	table th{
+		background-color: #197994;
+		color: #eaeaea;
+	}
+	table tr:nth-child(even){
+		background-color: #d6d6d6;
+		
+	}
+	
+
 </style>
+
+
 </head>
+
 <body>
-<div class="content">
-hjjvghjfcghjzxbhjbv
-kjhkjhkjgbhjghjhjgvhjvghvv<br>
-</div>
+
+	
+	<div id="table">
+		 
+		 <table border = "2" width ="500">
+			<tr>
+			<th>CONCERN</th>
+			<th>NUMBER OF VOTES</th>
+			<th>DEPARTMENT</th>
+			</tr>
+	
+			<% @concern2.each do |concern| %> 
+			<tr>	
+			<td><%= concern.cname%></td>
+			<td><%= concern.total%></td>
+			<td><%= concern.sname%></td>
+			<% end %> 
+			</tr>		
+
+			</table><br><br>
+	</div>
+				
+
+
+
+
+
+	<div id="graphDiv1">
+				
+	</div>
+	
+	
+	<!--[if IE]><script src="excanvas.js"></script><![endif]-->
+	<script src="html5-canvas-bar-graph.js"></script>
+	<script>(function () {
+	
+		function createCanvas(divName) {
+			
+			var div = document.getElementById(divName);
+			var canvas = document.createElement('canvas');
+			div.appendChild(canvas);
+			if (typeof G_vmlCanvasManager != 'undefined') {
+				canvas = G_vmlCanvasManager.initElement(canvas);
+			}	
+			var ctx = canvas.getContext("2d");
+			return ctx;
+		}
+		
+		var ctx = createCanvas("graphDiv1");
+		
+		var graph = new BarGraph(ctx);
+		graph.maxValue = <%=@largest%>;
+		graph.margin = 40;
+		graph.width = 700;
+		graph.height = 600;
+		graph.colors = ["#49a0d8", "#d353a0", "#ffc527", "#df4c27"];
+		graph.xAxisLabelArr = ["<%=@name1%>", "<%=@name2%>", "<%=@name3%>", "<%=@name4%>","<%=@name5%>"];
+		setInterval(function () {
+			graph.update([<%= @full_s %>, <%=@sastis %>, <%=@atleast %>,<%=@abit %>,<%=@notsatis%>]);
+		}, 1000);
+		
+		
+
+	}());</script>
+	
+		
+
 </body>
 </html>

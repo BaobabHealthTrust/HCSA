@@ -1,0 +1,44 @@
+ <html>
+<head>
+ 	 <style type = "text/css">
+	
+	html,body{
+		background-color:#8CCEF2;
+		}
+	
+	table{
+		border-collapse: collapse;	
+		width:90%;
+		background-color:#197994;
+		color:#FFFFF7;
+		
+	}
+	table th{
+		background-color: #197994;
+		color: #eaeaea;
+	}
+	table tr:nth-child(even){
+		background-color: #d6d6d6;
+		color:#058143;
+		
+	} 
+	 </style>
+
+</head>
+<body>		
+		<center>
+		<br><br><br>
+		<table cellpadding= "20" border="2">
+           			 <% @result2.each do |t| %>
+				<tr>	
+				<td><%= t.name%></td>
+				<td><%= t.comment%></td>
+				<td><%= t.time.to_date.strftime("%Y-%m-%d") %></td>
+				<td> <%= link_to("Delete", {:action => 'delcomment', :id => t.comment_id}, :class => 'action delete') %></td>
+				<% end %>
+				</tr>
+		</table>
+
+		</center>
+</body>
+</html>
