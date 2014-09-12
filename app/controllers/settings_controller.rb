@@ -38,8 +38,8 @@ class SettingsController < ApplicationController
 	 
 
 	def editconcern
-    @concern = Concern.find(params[:id])
-  end
+            @concern = Concern.find(params[:id])
+          end
   
   def update
     # Find object using form parameters
@@ -67,10 +67,14 @@ class SettingsController < ApplicationController
 
 	
 	end
+	
+	def delservice
+ 	@service = Service.find(params[:id])
+	end 
 
 
 	def delete_service
-		rails params.to_yaml
+		
 		Service.find(params[:id]).destroy 
 		flash[:notice] = "service deleted." 
 		redirect_to(:action => 'listservice') 
