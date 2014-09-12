@@ -19,7 +19,7 @@ class AdminController < ApplicationController
 					      and created_at <= date_add('#@end_date',INTERVAL 1 DAY) ")
 		
 		@concern = Concern.joins(:vote_concerns)
-		@concern2 = @concern.find_by_sql("select concerns.name as 'cname', count(*) as 'total', services.name as 'sname'
+		@concern2 = @concern.find_by_sql("select concerns.name as 'cname', services.name as 'sname', count(*) as 'total' 
 						  from vote_concerns 
 						  join concerns on concerns.concern_id = vote_concerns.concern_id 
 						  join votes on votes.vote_id = vote_concerns.vote_id 

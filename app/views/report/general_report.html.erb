@@ -1,6 +1,8 @@
    <HTML>
   <HEAD>
   <TITLE>General</TITLE>
+  <%= javascript_include_tag "email" %>
+  <link href="/stylesheets/print.css" rel="stylesheet" type="text/css" media="print"/>
   <style type = "text/css">
 
 	#content{
@@ -80,6 +82,7 @@
 	<br><br>
 	</div>
 		<center>
+			<div class="tebo">
 
 			<table border = "2" width = "500">
 				<tr>
@@ -110,19 +113,18 @@
 				</tr>		
 
 			</table><br><br>
+		</div>
 
 		</center> 
 
    </div>
 
 		<br><br><br>
+	
    </div>
-    
- 
-  </BODY>
 
 <center><br><br><br>
-		<div >
+		<div id="noprints">
 		 <input style=" border-radius: 5px;
 		  	 	background-color: white; 
 				padding-left: 30px;
@@ -133,12 +135,19 @@
 				color: #197994;"
 		type="button" value="Generate PDF" onClick="window.print()"/>
 		
+		
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button type="button"> Send Email</button>
+		
+		<a href="javascript: history.go(-1)"><button>Back</button></a>
 		
 		</div>
 </center>
 		<br><br><br><br><br><br>
+    
+ 
+  </BODY>
+
+
 
 
   </HTML>

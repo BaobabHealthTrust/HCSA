@@ -51,14 +51,12 @@
 			<tr>
 			<th>CONCERN</th>
 			<th>NUMBER OF VOTES</th>
-			<th>DEPARTMENT</th>
 			</tr>
 	
 			<% @concern2.each do |concern| %> 
 			<tr>	
 			<td><%= concern.cname%></td>
 			<td><%= concern.total%></td>
-			<td><%= concern.sname%></td>
 			<% end %> 
 			</tr>		
 
