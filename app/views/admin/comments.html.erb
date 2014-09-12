@@ -28,7 +28,9 @@
 <body>		
 		<center>
 		<br><br><br>
+		<%if !@result2.empty?%>
 		<table cellpadding= "20" border="2">
+
 
 				<tr>
 				<th>DEPARTMENT</th>
@@ -36,6 +38,7 @@
 				<th>DATE</th>
 				<th>ACTION</th>
 				</tr>
+
 
            			 <% @result2.each do |t| %>
 				<tr>	
@@ -46,7 +49,9 @@
 				<% end %>
 				</tr>
 		</table>
-
+		<%else%>
+	    	<h1>There are no comments!!! </h1>
+		<%end%>
 		</center>
 </body>
 </html>
