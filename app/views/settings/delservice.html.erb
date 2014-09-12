@@ -1,4 +1,12 @@
 <html>
+<head>
+<title>Service<title>
+
+		html,body{
+		background-color:#8CCEF2;
+		}
+
+</head>
 	<div> 
 	<h2>Delete Service</h2>
 	 <%= form_for(:service, :url => {:action => 'destroyService', :id => @service.id}) do |f| -%>

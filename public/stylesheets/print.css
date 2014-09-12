@@ -1,0 +1,24 @@
+#noprints,.noprint {display: none;}
+
+.tebo{
+	width: auto; 
+	border: 0; 
+	margin: 0 5%; 
+	padding: 0; 
+	float: none;
+	color: black; 
+	background: transparent;
+	
+	
+	}
+
+#content {width: 100%; margin: 0; 
+		float: none;
+		color: black; 
+		background: transparent;
+	}
+
+body { 
+	background: white; 
+	font-size: 12pt; 
+}
