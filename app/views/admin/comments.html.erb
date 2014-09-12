@@ -28,8 +28,9 @@
 <body>		
 		<center>
 		<br><br><br>
+		<%if !@result2.empty?%>
 		<table cellpadding= "20" border="2">
-
+		
            			 <% @result2.each do |t| %>
 				<tr>	
 				<td><%= t.name%></td>
@@ -39,7 +40,9 @@
 				<% end %>
 				</tr>
 		</table>
-
+		<%else%>
+	    	<h1>There are no comments!!! </h1>
+		<%end%>
 		</center>
 </body>
 </html>

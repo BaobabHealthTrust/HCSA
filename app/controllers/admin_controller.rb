@@ -121,6 +121,8 @@ class AdminController < ApplicationController
   end
 
 	def comments
+		
+		
 		@result = Comment.joins(:services) 
 		@result2 =@result.find_by_sql("select name, comment , comments.created_at as 'time', comment_id
 						from comments join services on comments.service_id = services.service_id")
